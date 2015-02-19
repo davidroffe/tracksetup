@@ -1,0 +1,26 @@
+<section id="home">
+	<div id="top-bar">
+	<a href="http://www.track-setup.com">Track-Setup</a>
+	</div>
+	<div id="home-center">
+  	<h1>Store Your Track</h1>
+  	<h1 id="data-h">Data</h1>
+  	<div id="center-box">
+  		<form ng-submit="login.submit()" ng-show="show">
+  			<input type="text" ng-model="login.email" placeholder="EMAIL">
+  			<input type="password" ng-model="login.password" placeholder="PASSWORD">
+        <p class="error" ng-repeat="error in login.errorMessage">{{error}}</p>
+  			<input type="submit" value="LOGIN">
+        <p>Don't have an account? <a href="#" ng-click="showForm()">Sign Up</a></p>
+  		</form>
+      <form ng-submit="signUp.submit()" ng-hide="show">
+        <input type="text" ng-model="signUp.email" placeholder="EMAIL">
+        <input type="password" ng-model="signUp.password" placeholder="PASSWORD">
+        <input type="password" ng-model="signUp.passwordConfirm" placeholder="CONFIRM PASSWORD">
+        <p class="error" ng-repeat="error in signUp.errorMessage">{{error}}</p>
+        <input type="submit" value="SIGN UP">
+        <p>Already have an account? <a href="#" ng-click="showForm()">Sign In</a></p>
+      </form>
+  	</div>
+  </div>
+</section>

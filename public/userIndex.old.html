@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="tsApp">
+	<head>
+	  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	  <link href='http://fonts.googleapis.com/css?family=Raleway:800,600,400' rel='stylesheet' type='text/css'>
+	  <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+	  <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+	  <link rel="stylesheet" href="assets/css/style.css">
+	  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+	  <script type="text/javascript" src="https://code.angularjs.org/1.3.8/angular-route.min.js"></script>
+	  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-cookies.js"></script>
+	  <script type="text/javascript" src="assets/js/app.js"></script>
+	  <script type="text/javascript" src="assets/js/lib/angular-ui-router.js"></script>
+	  <script type="text/javascript" src="assets/js/controllers/mainCtrl.js"></script>
+	  <script type="text/javascript" src="assets/js/controllers/carSelCtrl.js"></script>
+	  <script type="text/javascript" src="assets/js/controllers/cardSelCtrl.js"></script>	
+	  <script type="text/javascript" src="assets/js/controllers/cardCtrl.js"></script>
+	  <script type="text/javascript" src="assets/js/controllers/addCarCtrl.js"></script>
+	  <script type="text/javascript" src="assets/js/controllers/addCardCtrl.js"></script>		
+	  <script type="text/javascript" src="assets/js/directives/userMenuToggle.js"></script>
+	</head>
+	<body ng-controller="mainCtrl">
+		<div id="top-nav">
+		  <div id="top-nav-left">
+		  <a href="" class="logo"><i class="fa fa-flag-checkered fa-lg"></i><span>Track-Setup</span></a>
+		  </div>
+		    <div id="top-nav-right" menu>
+		      <a href="" ng-click="userMenuVisible()"><i class="fa fa-user"></i></a>
+		      <ul id="top-user-menu">
+		        <li><a href=""><i class="fa fa-cog"></i>Settings</a></li>
+		        <li><a href="" ng-click="logOut()"><i class="fa fa-power-off"></i>Logout</a></li>
+		      </ul>
+		    </div>
+		</div>
+		<div id="content" ng-view>
+		  
+		</div>
+	</body>
+</html>

@@ -1,0 +1,61 @@
+<div class="container">
+	<div id="car-title">
+		<img ng-src="{{car.data.avatar}}">
+		<h1>{{car.data.name}}</h1>
+		<i ng-click="car.edit.open()" class="fa fa-pencil fa-2x"></i>
+	</div>
+	<div id="car-cards">
+		<div id="cards-title">	
+			<div id="del-card">
+				<a ng-class="card.del.keepOpen" ng-click="card.del.open()">
+					<i class="fa fa-minus fa-lg"></i>
+					<span ng-class="card.del.keepOpen">{{card.del.delButton}}</span>
+				</a>
+			</div>
+			<h1>Cards</h1>
+			<div id="add-card">
+				<a ng-click="card.add.open()">
+					<i class="fa fa-plus fa-lg"></i>
+					<span>New Card</span>
+				</a>
+			</div>
+			<p class="del-opt" ng-click="card.del.cancelOrUndo()" ng-show="card.del.isOpen">{{card.del.canOrUndoLabel}}<i ng-class="card.del.canOrUndoIcon"></i></p>
+		</div>
+		<ul id="card-sel-container">
+			<li ng-repeat="cards in card.data">
+				<i ng-click="card.del.setDel(cards._id, $index)" ng-class="card.del.chkBox[$index]"></i>
+				<a ng-href="panel/card/{{cards._id}}" ng-class="cardClass">
+					<p class="col-1">{{cards.name}}</p>
+					<p class="col-2">{{cards.date}}</p>
+					<p class="col-3">{{cards.track}}</p>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div id="car-notes">
+		<div id="notes-title">
+			<div id="del-note">
+				<a ng-click="note.del.open()" ng-class="note.del.keepOpen">
+					<i class="fa fa-minus fa-lg"></i>
+					<span ng-class="note.del.keepOpen">{{note.del.delButton}}</span>
+				</a>
+			</div>
+			<h1>Notes</h1>
+			<div id="add-note">
+				<a ng-click="note.add.open()">
+					<i class="fa fa-plus fa-lg"></i>
+					<span>New Card</span>
+				</a>
+			</div>
+			<p class="del-opt" ng-click="note.del.cancelOrUndo()" ng-show="note.del.isOpen">{{note.del.canOrUndoLabel}}<i ng-class="note.del.canOrUndoIcon"></i></p>
+		</div>
+		<ul id="note-sel-container">
+			<li ng-repeat="notes in note.data">
+				<i ng-click="note.del.setDel(notes._id, $index)" ng-class="note.del.chkBox[$index]"></i>
+				<a ng-click="note.open($index)" ng-class="note.noteSelClass">
+					<p>{{notes.title}}</p>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>

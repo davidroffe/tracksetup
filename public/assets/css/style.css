@@ -1,0 +1,1065 @@
+/**
+ * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
+ * http://cssreset.com
+ */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+a, a:link, a:visited, a:active, a:focus, a:hover {
+	text-decoration: none;
+	color: #767676;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+/* Bootstrap/Angular-UI*/
+* {
+  box-sizing: inherit;
+}
+
+.nav, .pagination, .carousel, .panel-title a, a {
+  cursor: pointer;
+}
+
+.modal {
+  background: rgba(0,0,0,0.4);
+}
+
+
+
+.modal-dialog {
+    margin: 100px auto 0;
+}
+
+html{
+  height: 100%;
+}
+body {
+  height: 100%;
+	line-height: 1;
+	font-family: 'Raleway', sans-serif;
+	background-color: #F4F4F4;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+@font-face {
+  font-family: geo_sans_light;
+  src: url(../fonts/GeosansLight.ttf);
+}
+
+::selection {
+  background: #ef9676;
+  color: #fff;
+}
+
+.error{
+  color: red !important;
+}
+
+#home {
+  background: url(../img/datsun_engine1.jpg) no-repeat 45% 0/cover;
+  height: 100%;
+  min-height: 765px;
+  min-width: 540px;
+  overflow: hidden;
+}
+
+#home-center {
+  width: 540px;
+  margin: 200px auto 0;
+}
+
+#home-center > h1 {
+  background-color: rgba(0, 0, 0, 0.6);
+  font-family: geo_sans_light;
+  font-size: 70px;
+  text-align: center;
+  color: #fff;
+  margin: 10px auto;
+}
+
+#home-center > h2 {
+  background-color: rgba(0, 0, 0, 0.6);
+  font-family: geo_sans_light;
+  font-size: 45px;
+  text-align: center;
+  color: #fff;
+  margin: 10px auto;
+}
+
+#home-center > #data-h {
+  width: 225px;
+}
+
+#center-box {
+  width: 520px;
+  margin: 50px auto 0;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 25px 0;
+  border-bottom: 20px solid #e96333;
+}
+
+#center-box > form {
+  width: 400px;
+  margin: 0 auto;
+}
+
+#center-box input[type="text"],
+#center-box input[type="password"] {
+  padding: 14px;
+  width: 300px;
+  display: block;
+  border: none;
+  border-bottom: 1px solid #fff;
+  margin: 10px auto;
+  color: #fff;
+  font-size: 14px;
+  background: none;
+}
+
+#center-box input[type="text"]:focus,
+#center-box input[type="password"]:focus {
+  border-bottom: 1px solid #e96333;
+  outline: 0;
+}
+
+#centerbox ::-webkit-input-placeholder {
+color: #FFFFFF;
+opacity:1;
+}
+
+#centerbox ::-moz-placeholder { /* Firefox 18- */
+color: #FFFFFF;
+opacity:1;
+}
+
+#centerbox ::-moz-placeholder { /* Firefox 19+ */
+color: #FFFFFF;
+opacity:1;
+}
+
+#centerbox ::-ms-input-placeholder {
+color: #FFFFFF;
+opacity:1;
+}
+
+#center-box button,
+#center-box input[type="submit"] {
+  border: 2px solid #fff;
+  padding: 0px 14px;
+  width:326px;
+  height: 50px;
+  background: none;
+  color: #fff;
+  margin: 40px auto 0;
+  font-family: 'Raleway';
+  font-size: 16px;
+  display: block;
+  transition: background 0.5s ease,
+              color 0.5s ease;
+}
+
+#center-box button:hover,
+#center-box input[type="submit"]:hover {
+  background: #fff;
+  color: #333;
+}
+
+#center-box button:focus,
+#center-box input[type="submit"]:focus {
+  outline: 0;
+}
+
+#center-box form p {
+  color: #fff;
+  margin-top: 25px;
+  text-align: center;
+}
+
+#center-box form p.error {
+  margin-bottom: -15px;
+}
+
+#center-box > form p a {
+  color: #e96333;
+}
+
+#center-box > form p a:hover {
+  text-decoration: underline;
+}
+
+.modal-back {
+  z-index: 2000;
+  background: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+#signup-modal {
+  z-index: 2001;
+  position: relative;
+  top: 215px;
+  margin: 0 auto;
+  width: 500px;
+}
+
+.modal-open {
+  overflow: hidden;
+  position: fixed;
+  height:100%;
+  width:100%;
+}
+
+/*Logged in*/
+
+/*#left-nav {
+  position: fixed;
+  height: 100%;
+  width: 220px;
+  left: 0;
+  background-color: #383d43;
+}
+
+body.retract > #left-nav {
+  width: 60px;
+}
+
+body.retract > #left-nav span {
+  display: none;
+}
+
+#user a {
+  display: block;
+}
+
+#user > .logo {
+  font-size: 20px;
+  font-weight: 800;
+  font-family: geo_sans_light;
+  color: #fff;
+  text-align: center;
+  padding: 35px 0;
+}
+
+#user > p {
+  text-align: center;
+  margin: 10px 0;
+}
+
+#ava {
+  width: 100px;
+  margin:0 auto;
+}
+
+#ava > img {
+  width: 100px;
+  border-radius: 50%;
+}
+
+body.retract > #left-nav > #user > #ava,
+body.retract > #left-nav > #user > #ava > img {
+  width: 50px;
+}
+
+#left-nav, #left-nav a,
+#left-nav p{
+  color: #b2b2b2;
+}
+
+#left-nav > nav > ul > li > a {
+  padding: 14px 25px;
+  display: block;
+  font-family: 'Raleway';
+  font-weight: 800;
+  font-size: 13px;
+  transition: background 0.5s ease,
+              color 0.5s ease;
+}
+
+body.retract > #left-nav > nav > ul > li > a {
+  padding: 14px 17px;
+}
+
+#left-nav nav > ul > li > a:hover {
+  background-color: #e96333;
+  color: #fff;
+}
+
+#left-nav nav > ul > li > a.active {
+  background-color: #e96333;
+  color: #fff;
+}
+
+#left-nav i {
+  margin-right: 6px;
+}
+
+body.retract > #left-nav i.fa {
+  font-size: 25px;
+}*/
+
+#top-nav {
+  background-color: rgba(255,255,255,0.75);
+  padding: 0px 30px;
+  overflow: hidden;
+  border-bottom: 2px solid #e5e5e5;
+}
+
+/*body.retract > #top-nav {
+  margin-left: 60px;
+}
+
+#top-nav-left > #menu-toggle {
+  color: #b3b3b3;
+}
+
+#top-nav-left > #menu-toggle:visited {
+  color: #b3b3b3;
+}
+
+#top-nav-left > #menu-toggle {
+  margin: 0 20px;
+}
+*/
+
+#top-nav-left {
+  float: left;
+}
+
+#top-nav-left .logo > i {
+  font-size: 50px;
+  margin-left: 20px;
+}
+
+#top-nav-left .logo > div {
+  display: inline-block;
+  width: 100px;
+  font-weight: 600;
+  vertical-align: top;
+  margin: 18px 0 0 10px;
+  font-family: geo_sans_light;
+  font-size: 30px;
+}
+
+#top-nav-right {
+  float: right;
+  font-size: 30px;
+  padding:30px 0;
+}
+
+#top-user-menu {
+  display: none;
+  position: absolute;
+  border: 1px solid #cfcfcf;
+  background: #fff;
+  border-radius: 6px;
+  padding: 5px 20px;
+  margin: 5px 0 0 -160px;
+  box-shadow: 0 1px 6px rgba(0,0,0,.15);
+}
+
+#top-user-menu > li {
+  margin: 10px 0;
+}
+
+#top-user-menu i {
+  display: inline;
+  margin-right: 5px;
+}
+
+#content {
+  padding: 30px;
+}
+
+#background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: url(/assets/img/panel_bg.jpg);
+  z-index: -1;
+  opacity: .15;
+  background-size: cover;
+}
+
+/*body.retract > #content {
+  margin-left: 60px;
+}*/
+
+#cars-view {
+  padding: 16px;
+}
+
+#cars-view li {
+  display: inline-block;
+  overflow: hidden;
+  margin: 20px;
+}
+
+#cars-view .create-card:hover {
+	box-shadow: 0 1px 6px rgba(0,0,0,0.15);
+}
+
+.indi-card {
+  display: block;
+  height: 200px;
+  width: 250px;
+  background: rgba(255,255,255,0.8);
+  overflow: hidden;
+}
+
+.create-card {
+  line-height: 35px;
+  text-align: center;
+  font-size: 25px;
+}
+
+.create-card > i {
+  display: block;
+  margin: 35px 0 18px;
+  font-size: 90px;
+}
+
+.live-card > img {
+  display: block;
+  margin: -50px auto 0;
+}
+
+.live-card > p {
+  position: relative;
+  margin-top: -55px;
+	text-align: center;
+	padding: 15px;
+  background: #CCC;
+  color:#FFF;
+  font-size: 25px;
+  transition: background 0.5s ease;
+}
+
+.live-card:hover > p {
+  background: #FF8241;
+}
+
+/*Card Select View*/
+.container {
+  width: 1230px;
+  margin: 0 auto;
+}
+
+#car-title {
+  margin: 6px auto 36px;
+  width: 200px;
+}
+
+#car-title > img {
+  display: block;
+  width: 200px;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+#car-title > h1 {
+  display: inline-block;
+  margin-left: 37px;
+  color: #9d9d9d;
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+  padding: 15px 0;
+  width: 126px;
+}
+
+#car-title > i {
+  opacity: 0;
+  color: #9d9d9d;
+  vertical-align: 2px;
+  cursor: pointer;
+  transition: opacity 0.3s ease, color, 0.3s ease;
+}
+
+#car-title > i:hover {
+  color:#000;
+}
+
+#car-title:hover > i {
+  opacity: 1;
+}
+
+#car-cards {
+	padding: 15px;
+	background: #FFF;
+	display: inline-block;
+	width: 800px;
+	border-radius: 2px;
+  float: left;
+}
+
+#cards-title {
+  overflow: hidden;
+}
+
+#add-card {
+  float: right;
+	height: 60px;
+}
+
+#cards-title h1{
+  display: inline-block;
+	margin-left: 275px;
+	font-size: 30px;
+	color: #A8A8A8;
+}
+
+#del-card {
+  float: left;
+  width: 86px;
+}
+
+#del-card > a {
+  display: block;
+  float: left;
+  background: white;
+  margin-top: 5px;
+  padding-top: 2px;
+  width: 17px;
+  height: 16px;
+  overflow: hidden;
+  color: #767676;
+  transition: width 0.2s ease 0.1s;
+}
+
+#del-card > a > i {
+  float: right;
+  margin-top: 2px;
+}
+
+.del-opt {
+  padding-top: 5px;
+  font-size: 14px;
+  color: #767676;
+  cursor: pointer;
+}
+
+.del-opt > i.fa-undo {
+  margin-left: 12px;
+}
+
+.del-opt > i.fa-arrow-circle-o-left {
+  margin-left: 5px;
+}
+
+.del-but {
+  margin-right: 5px;
+  color: #767676;
+  cursor: pointer;
+}
+
+#add-card > a {
+  display: block;
+  float: right;
+  background: white;
+  margin: 5px 0 20px;
+  padding-top: 2px;
+  width: 17px;
+  height: 16px;
+  overflow: hidden;
+  color: #767676;
+  transition: width 0.2s ease 0.1s;
+}
+
+#add-card > a > span,
+#del-card > a > span {
+  opacity: 0;
+  font-size: 14px;
+  transition: opacity 0.17s ease;
+}
+
+#add-card > a:hover,
+#del-card > a:hover {
+  width: 65px;
+  transition: width 0.25s ease;
+}
+
+#add-card > a:hover > span,
+#del-card > a:hover > span {
+  opacity: 1;
+  transition: opacity 0.5s ease 0.2s;
+}
+
+#del-card > a.keep-open,
+#del-note > a.keep-open {
+  width: 65px;
+}
+
+#del-card > a > span.keep-open,
+#del-note > a > span.keep-open {
+  opacity: 1;
+}
+
+.card-sel {
+  display: block;
+  padding: 20px 25px;
+  margin-bottom: 10px;
+  border-bottom: 5px solid #ccc;
+  transition: border-bottom 0.5s ease;
+}
+
+.card-sel:hover {
+  border-bottom: 5px solid #ff8241;
+}
+
+.card-sel.del {
+  display: inline-block;
+  padding: 20px 15px;
+}
+
+.card-sel > p{
+    display: inline-block;
+    font-size: 22px;
+    width: 230px;
+}
+
+.check-sel {
+  display: none;
+  cursor: pointer;
+  margin: 0 10px;
+  font-size: 32px;
+  width: 25px;
+  vertical-align: middle;
+  color: #ccc;
+}
+
+.check-sel:hover {
+  color: #767676;
+}
+
+.check-sel.fa-check-square-o {
+    color: #767676;
+}
+.check-sel.del {
+  display: inline-block;
+}
+
+.check-sel.set {
+  color: #FF3A00;
+}
+
+#car-notes {
+	display: block;
+  padding: 15px;
+	width: 300px;
+  background: #FFF;
+  float: left;
+  margin-left: 50px;
+  border-radius: 2px;
+}
+
+#notes-title {
+  overflow: hidden;
+  height: 60px;
+}
+
+#notes-title > h1{
+  display: inline-block;
+  margin-left: 22px;
+  text-align: center;
+  font-size: 30px;
+  color: #A8A8A8;
+}
+
+#add-note {
+  float: right;
+  height: 60px;
+}
+
+#del-note {
+  float: left;
+  width: 86px;
+}
+
+#del-note > a {
+  display: block;
+  float: left;
+  background: white;
+  margin-top 5px;
+  padding-top: 2px;
+  width: 17px;
+  height: 16px;
+  overflow: hidden;
+  color: #767676;
+  transition: width 0.2s ease 0.1s;
+}
+
+#del-note > a > i {
+  float: right;
+  margin-top: 2px;
+}
+
+#add-note > a {
+  display: block;
+  float: right;
+  background: white;
+  margin: 5px 0 20px;
+  padding-top: 2px;
+  width: 17px;
+  height: 16px;
+  overflow: hidden;
+  color: #767676;
+  transition: width 0.2s ease 0.1s;
+}
+
+#add-note > a > span,
+#del-note > a > span {
+  opacity: 0;
+  font-size: 14px;
+  transition: opacity 0.17s ease;
+}
+
+#add-note > a:hover,
+#del-note > a:hover {
+  width: 65px;
+  transition: width 0.25s ease;
+}
+
+#add-note > a:hover > span,
+#del-note > a:hover > span {
+  opacity: 1;
+  transition: opacity 0.5s ease 0.2s;
+}
+
+#add-note-modal {
+    position: relative;
+    margin: 200px auto 0;
+    z-index: 1000;
+}
+
+.note-sel {
+  display: block;
+  padding: 20px 20px;
+  margin-bottom: 10px;
+  border-bottom: 5px solid #ccc;
+  transition: border-bottom 0.5s ease;
+}
+
+.note-sel.del {
+  display: inline-block;
+  width: 210px;
+  padding: 20px 15px;
+}
+
+.note-sel:hover {
+  border-bottom: 5px solid #ff8241;
+}
+
+.note-sel > p{
+    display: inline-block;
+    font-size: 22px;
+}
+
+p.col-1 {
+
+}
+
+p.col-2 {
+  text-align: center;
+}
+
+p.col-3 {
+  float: right;
+  text-align: right;
+}
+
+/*Individual Card View*/
+table.card {
+  margin: auto;
+}
+
+th, td {
+  text-align: right;
+  width: 350px;
+  font-size: 22px;
+  color: #767676;
+  padding: 10px 10px 10px 0;
+  background-color: rgba(246,246,246,0.8)
+}
+
+.lft-al {
+  text-align: left;
+}
+
+thead {
+  border-bottom: 1px solid #808080;
+}
+
+thead > tr {
+  border-bottom: none;
+}
+
+tr {
+  border-bottom: 1px solid #cccccc
+}
+
+.sec {
+  background: #e8e8e8;
+}
+
+.ctg-1 > i, .ctg-1 {
+    margin: 0 10px 0 0;
+}
+
+.ctg-2 > i, .ctg-2 {
+	margin: 0 10px 0 25px;
+}
+
+.ctg-3 > i, .ctg-3 {
+	margin: 0 10px 0 50px;
+}
+
+/*
+Form styles for adding cars/cards/notes
+*/
+
+button.cancel {
+  background: #ffcb00;
+}
+
+.add ::-webkit-input-placeholder {
+padding-top: 3px;
+font-size: 14px;
+}
+
+.add ::-moz-placeholder { /* Firefox 18- */
+padding-top: 3px;
+font-size: 14px;
+}
+
+.add ::-moz-placeholder { /* Firefox 19+ */
+padding-top: 3px;
+font-size: 14px;
+}
+
+.add ::-ms-input-placeholder {
+padding-top: 3px;
+font-size: 14px;
+}
+
+.add.cards > .form-container,
+.add.cars > .form-container,
+.add.notes > .form-container {
+  width: 550px;
+  padding: 20px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 2px;
+}
+
+.add h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #A8A8A8;
+}
+
+.add form {
+  overflow: hidden;
+}
+
+.add label {
+  display: block;
+  margin: 18px 0 6px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #666;
+}
+
+.add input[type="text"], .add textarea {
+  padding: 10px 0 10px 10px;
+  margin-left: 1px;
+  border: 1px solid #E5E5E5;
+  border-radius: 5px;
+  color: #808080;
+}
+
+.add input[type="text"]:focus,
+.add textarea:focus {
+  outline-color: #E96333;
+}
+
+button {
+    float: right;
+    padding: 14px;
+    width: 125px;
+    border: none;
+    background: #FF8241;
+    color: #FFF;
+    font-weight: 800;
+    font-family: 'Raleway';
+    font-size: 13px;
+    margin: 20px 5px 12px;
+    border-radius: 3px;
+}
+
+.add button.upload {
+    float: none;
+    margin: 10px 0 0;
+    background: #FF3A00;
+}
+
+#car-avatar-upload {
+    display: none;
+}
+
+.preview-avatar {
+  display: block;
+  width: 120px;
+}
+
+.add select {
+  	padding:10px;
+  	margin-left: 1px;
+  	border: 1px solid #E5E5E5;
+  	border-radius: 5px;
+  	color: #808080;
+	background: #FFF;
+}
+
+.add select:focus {
+  outline-color: #E96333;
+}
+
+label.radio {
+  display: inline-block;
+  margin: 0;
+}
+
+.toggle-hide {
+  display: none;
+}
+
+/*Add new car page*/
+
+.add.cars input[type="text"] {
+  padding: 10px 0 10px 10px;
+  margin-left: 1px;
+  width:97%;
+  border: 1px solid #E5E5E5;
+  border-radius: 5px;
+  color: #808080;
+}
+
+.add.cars input[type="text"]:focus {
+  outline-color: #E96333;
+}
+
+.add.cars select {
+  width:200px;
+}
+
+/*Add new card page*/
+
+.add.cards input[type="text"] {
+  padding: 10px 0 10px 10px;
+  margin-left: 1px;
+  width: 110px;
+  border: 1px solid #E5E5E5;
+  border-radius: 5px;
+  color: #808080;
+}
+
+.add.cards input[type="text"].single {
+    width: 150px;
+}
+
+.add.cars input[type="text"]:focus {
+  outline-color: #E96333;
+}
+
+.add.cards label > span:hover {
+	cursor: pointer;
+}
+
+.add.cards label > span > i.fa {
+  margin-right: 5px;
+  font-size:  18px;
+}
+
+.add.cards label > span:hover > i {
+  color: #E96333;
+}
+
+i.add.cards.expand {
+  margin-right: 10px;
+}
+
+p.add.cards.expand {
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/*Add new notes Modal*/
+.add.notes input[type="text"] {
+  width: 425px;
+}
+
+.add textarea {
+  width: 525px;
+  max-width: 525px;
+  height: 200px;
+  max-height: 200px;
+}
+
+/*Note View Modal*/
+.note {
+  padding: 20px;
+  overflow: hidden;
+}
+
+.note.title {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #A8A8A8;
+}
+
+.note.body {
+  font-size: 20px;
+  color: #666;
+}

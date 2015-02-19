@@ -1,0 +1,174 @@
+<div class="add cards">
+	<div class="form-container">
+		<h2>Add New Card</h2>
+		<p class="add cards expand" ng-click="card.add.expandAll()"><i class="fa fa-arrows-v expand add cards"></i>{{card.add.expandToggleLabel}}</p>
+		<form>
+			<div>
+				<label for="cardName"><span ng-click="show[0] = !show[0]"><i ng-class="show[0] ? 'fa fa-minus-square-o' : 'fa fa-plus-square-o'"></i>Name</span></label>
+				<div ng-show="show[0]">
+					<input class="single" type="text" id="cardName" name="name" ng-model="card.new.name" placeholder="eg Wet Weather">
+				</div>
+			</div>
+			<div>
+				<label for="trackName"><span ng-click="show[1] = !show[1]"><i ng-class="show[1] ? 'fa fa-minus-square-o' : 'fa fa-plus-square-o'"></i>Track</span></label>
+				<div ng-show="show[1]">
+					<input id="trackName" class="single" type="text" name="track" ng-model="card.new.track" placeholder="eg Road Atlanta">
+				</div>
+			</div>
+			<div>
+				<label for="toe"><span ng-click="show[2] = !show[2]"><i ng-class="show[2] ? 'fa fa-minus-square-o' : 'fa fa-plus-square-o'"></i>Toe</span></label>
+				<div ng-show="show[2]">
+					<input id="toe" type="text" name="toe-f" ng-model="card.new.toe.front" placeholder="FRONT">
+					<input type="text" name="toe-r" ng-model="card.new.toe.rear" placeholder="REAR">
+				</div>
+			</div>
+			<div>
+				<label for="camber"><span ng-click="show[3] = !show[3]"><i ng-class="show[3] ? 'fa fa-minus-square-o' : 'fa fa-plus-square-o'"></i>Camber</span></label>
+				<div ng-show="show[3]">
+					<input id="camber" type="text" name="camber-fl" ng-model="card.new.camber.frontLeft" placeholder="FRONT LEFT">
+					<input type="text" name="camber-fr" ng-model="card.new.camber.frontRight" placeholder="FRONT RIGHT">
+					<input type="text" name="camber-rl" ng-model="card.new.camber.rearLeft" placeholder="REAR LEFT">
+					<input type="text" name="camber-rr" ng-model="card.new.camber.rearRight" placeholder="REAR RIGHT">
+				</div>
+			</div>
+			<div>
+				<label for="caster"><span ng-click="show[4] = !show[4]"><i ng-class="show[4] ? 'fa fa-minus-square-o' : 'fa fa-plus-square-o'"></i>Caster</span></label>
+				<div ng-show="show[4]">
+					<input id="caster" type="text" name="caster-f" ng-model="card.new.caster.left" placeholder="LEFT">
+					<input type="text" name="caster-r" ng-model="card.new.caster.right" placeholder="RIGHT">
+				</div>
+			</div>
+			<div>
+				<label><span ng-click="show[5] = !show[5]"><i ng-class="show[5] ? 'fa fa-minus-square-o' : 'fa fa-plus-square-o'"></i>Springs</span></label>
+				<div class="ctg-2" ng-show="show[5]">
+					<label for="rates"><span ng-click="show[6] = !show[6]"><i ng-class="show[6] ? 'fa fa-minus-square-o' : 'fa fa-plus-square-o'"></i>Rates</span></label>
+					<div ng-show="show[6]">
+						<input id="rates" type="text" name="spring-rates-fl" ng-model="card.new.spring.rate.frontLeft" placeholder="FRONT LEFT">
+						<input type="text" name="spring-rates-fr" ng-model="card.new.spring.rate.frontRight" placeholder="FRONT RIGHT">
+						<input type="text" name="spring-rates-rl" ng-model="card.new.spring.rate.rearLeft" placeholder="REAR LEFT">
+						<input type="text" name="spring-rates-rr" ng-model="card.new.spring.rate.rearRight" placeholder="REAR RIGHT">
+					</div>
+					<label for="length"><span ng-click="show[7] = !show[7]"><i ng-class="show[7] ? 'fa fa-minus-square-o' : 'fa fa-plus-square-o'"></i>Length</span></label>
+					<div ng-show="show[7]">
+						<input id="length" type="text" name="spring-length-fl" ng-model="card.new.spring.length.frontLeft" placeholder="FRONT LEFT">
+						<input type="text" name="spring-length-fr" ng-model="card.new.spring.length.frontRight" placeholder="FRONT RIGHT">
+						<input type="text" name="spring-length-rl" ng-model="card.new.spring.length.rearLeft" placeholder="REAR LEFT">
+						<input type="text" name="spring-length-rr" ng-model="card.new.spring.length.rearRight" placeholder="REAR RIGHT">
+					</div>
+				</div>
+			</div>
+			<div>
+				<label for="r1"><span ng-click="show[8] = !show[8]"><i ng-class="show[8] ? 'fa fa-minus-square-o' : 'fa fa-plus-square-o'"></i>Shocks</span></label>
+				<div ng-show="show[8]">
+					<div>						
+						<input type="radio" id="r1" name="shockType" ng-model="shockType" value="one">
+						<label for="r1" class="radio">1-Way</label>
+						<input type="radio" id="r2" name="shockType" ng-model="shockType" value="two">
+						<label for="r2" class="radio">2-Way</label>
+						<input type="radio" id="r3" name="shockType" ng-model="shockType" value="three">
+						<label for="r3" class="radio">3-Way</label>
+						<input type="radio" id="r4" name="shockType" ng-model="shockType" value="four">
+						<label for="r4" class="radio">4-Way</label>
+					</div>
+					<div class="ctg-2" ng-show="shockType == 'one'">
+						<input type="text" name="spring-length-fl" ng-model="card.new.shock.oneWay.frontLeft" placeholder="FRONT LEFT">
+						<input type="text" name="spring-length-fr" ng-model="card.new.shock.oneWay.frontRight" placeholder="FRONT RIGHT">
+						<input type="text" name="spring-length-rl" ng-model="card.new.shock.oneWay.rearLeft" placeholder="REAR LEFT">
+						<input type="text" name="spring-length-rr" ng-model="card.new.shock.oneWay.rearRight" placeholder="REAR RIGHT">
+					</div>
+					<div class="ctg-2" ng-show="shockType == 'two'">
+						<label>Rebound</label>
+						<input type="text" name="spring-length-fl" ng-model="card.new.shock.twoWay.rebound.frontLeft" placeholder="FRONT LEFT">
+						<input type="text" name="spring-length-fr" ng-model="card.new.shock.twoWay.rebound.frontRight" placeholder="FRONT RIGHT">
+						<input type="text" name="spring-length-rl" ng-model="card.new.shock.twoWay.rebound.rearLeft" placeholder="REAR LEFT">
+						<input type="text" name="spring-length-rr" ng-model="card.new.shock.twoWay.rebound.rearRight" placeholder="REAR RIGHT">
+						<label>Compression</label>
+						<input type="text" name="spring-length-fl" ng-model="card.new.shock.twoWay.compression.frontLeft" placeholder="FRONT LEFT">
+						<input type="text" name="spring-length-fr" ng-model="card.new.shock.twoWay.compression.frontRight" placeholder="FRONT RIGHT">
+						<input type="text" name="spring-length-rl" ng-model="card.new.shock.twoWay.compression.rearLeft" placeholder="REAR LEFT">
+						<input type="text" name="spring-length-rr" ng-model="card.new.shock.twoWay.compression.rearRight" placeholder="REAR RIGHT">
+					</div>
+					<div class="ctg-2" ng-show="shockType == 'three'">
+						<label>Rebound</label>
+						<input type="text" name="spring-length-fl" ng-model="card.new.shock.threeWay.rebound.frontLeft" placeholder="FRONT LEFT">
+						<input type="text" name="spring-length-fr" ng-model="newCard.shock.threeWay.rebound.frontRight" placeholder="FRONT RIGHT">
+						<input type="text" name="spring-length-rl" ng-model="newCard.shock.threeWay.rebound.rearLeft" placeholder="REAR LEFT">
+						<input type="text" name="spring-length-rr" ng-model="newCard.shock.threeWay.rebound.rearRight" placeholder="REAR RIGHT">
+						<label>Compression</label>
+						<label>Low Speed</label>
+						<input type="text" name="spring-length-fl" ng-model="card.new.shock.threeWay.compression.lowSpeed.frontLeft" placeholder="FRONT LEFT">
+						<input type="text" name="spring-length-fr" ng-model="card.new.shock.threeWay.compression.lowSpeed.frontRight" placeholder="FRONT RIGHT">
+						<input type="text" name="spring-length-rl" ng-model="card.new.shock.threeWay.compression.lowSpeed.rearLeft" placeholder="REAR LEFT">
+						<input type="text" name="spring-length-rr" ng-model="card.new.shock.threeWay.compression.lowSpeed.rearRight" placeholder="REAR RIGHT">
+						<label>High Speed</label>
+						<input type="text" name="spring-length-fl" ng-model="card.new.shock.threeWay.compression.highSpeed.frontLeft" placeholder="FRONT LEFT">
+						<input type="text" name="spring-length-fr" ng-model="card.new.shock.threeWay.compression.highSpeed.frontRight" placeholder="FRONT RIGHT">
+						<input type="text" name="spring-length-rl" ng-model="card.new.shock.threeWay.compression.highSpeed.rearLeft" placeholder="REAR LEFT">
+						<input type="text" name="spring-length-rr" ng-model="card.new.shock.threeWay.compression.highSpeed.rearRight" placeholder="REAR RIGHT">
+					</div>
+					<div class="ctg-2" ng-show="shockType == 'four'">
+						<label>Rebound</label>
+						<label>Low Speed</label>
+						<input type="text" name="spring-length-fl" ng-model="card.new.shock.threeWay.rebound.lowSpeed.frontLeft" placeholder="FRONT LEFT">
+						<input type="text" name="spring-length-fr" ng-model="card.new.shock.threeWay.rebound.lowSpeed.frontRight" placeholder="FRONT RIGHT">
+						<input type="text" name="spring-length-rl" ng-model="card.new.shock.threeWay.rebound.lowSpeed.rearLeft" placeholder="REAR LEFT">
+						<input type="text" name="spring-length-rr" ng-model="card.new.shock.threeWay.rebound.lowSpeed.rearRight" placeholder="REAR RIGHT">
+						<label>High Speed</label>
+						<input type="text" name="spring-length-fl" ng-model="card.new.shock.threeWay.rebound.highSpeed.frontLeft" placeholder="FRONT LEFT">
+						<input type="text" name="spring-length-fr" ng-model="card.new.shock.threeWay.rebound.highSpeed.frontRight" placeholder="FRONT RIGHT">
+						<input type="text" name="spring-length-rl" ng-model="card.new.shock.threeWay.rebound.highSpeed.rearLeft" placeholder="REAR LEFT">
+						<input type="text" name="spring-length-rr" ng-model="card.new.shock.threeWay.rebound.highSpeed.rearRight" placeholder="REAR RIGHT">
+						<label>Compression</label>
+						<label>Low Speed</label>
+						<input type="text" name="spring-length-fl" ng-model="card.new.shock.threeWay.compression.lowSpeed.frontLeft" placeholder="FRONT LEFT">
+						<input type="text" name="spring-length-fr" ng-model="card.new.shock.threeWay.compression.lowSpeed.frontRight" placeholder="FRONT RIGHT">
+						<input type="text" name="spring-length-rl" ng-model="card.new.shock.threeWay.compression.lowSpeed.rearLeft" placeholder="REAR LEFT">
+						<input type="text" name="spring-length-rr" ng-model="card.new.shock.threeWay.compression.lowSpeed.rearRight" placeholder="REAR RIGHT">
+						<label>High Speed</label>
+						<input type="text" name="spring-length-fl" ng-model="card.new.shock.threeWay.compression.highSpeed.frontLeft" placeholder="FRONT LEFT">
+						<input type="text" name="spring-length-fr" ng-model="card.new.shock.threeWay.compression.highSpeed.frontRight" placeholder="FRONT RIGHT">
+						<input type="text" name="spring-length-rl" ng-model="card.new.shock.threeWay.compression.highSpeed.rearLeft" placeholder="REAR LEFT">
+						<input type="text" name="spring-length-rr" ng-model="card.new.shock.threeWay.compression.highSpeed.rearRight" placeholder="REAR RIGHT">
+					</div>
+				</div>
+			</div>
+			<div>
+				<label for="cornWeights"><span ng-click="show[9] = !show[9]"><i ng-class="show[9] ? 'fa fa-minus-square-o' : 'fa fa-plus-square-o'"></i>Corner Weights</span></label>
+				<div ng-show="show[9]">	
+					<input id="cornWeights" type="text" name="corner-weights-fl" ng-model="card.new.cornerWeight.frontLeft" placeholder="FRONT LEFT">
+					<input type="text" name="corner-weights-fr" ng-model="card.new.cornerWeight.frontRight" placeholder="FRONT RIGHT">
+					<input type="text" name="corner-weights-rl" ng-model="card.new.cornerWeight.rearLeft" placeholder="REAR LEFT">
+					<input type="text" name="corner-weights-rr" ng-model="card.new.cornerWeight.rearRight" placeholder="REAR RIGHT">
+				</div>
+			</div>
+			<div>
+				<label for="swaybars"><span ng-click="show[10] = !show[10]"><i ng-class="show[10] ? 'fa fa-minus-square-o' : 'fa fa-plus-square-o'"></i>Swaybars</span></label>
+				<div ng-show="show[10]">	
+					<input id="swaybars" type="text" name="swaybars-f" ng-model="card.new.swaybar.front" placeholder="FRONT">
+					<input type="text" name="swaybars-r" ng-model="card.new.swaybar.rear" placeholder="REAR">
+				</div>
+			</div>
+			<div>
+				<label><span ng-click="show[11] = !show[11]"><i ng-class="show[11] ? 'fa fa-minus-square-o' : 'fa fa-plus-square-o'"></i>Tires</span></label>
+				<div class="ctg-2" ng-show="show[11]">
+					<label for="coldPress"><span ng-click="show[12] = !show[12]"><i ng-class="show[12] ? 'fa fa-minus-square-o' : 'fa fa-plus-square-o'"></i>Cold Pressures</span></label>
+					<div ng-show="show[12]">	
+						<input id ="coldPress" type="text" name="cold-tire-pressures-fl" ng-model="card.new.tire.coldPressure.frontLeft" placeholder="FRONT LEFT">
+						<input type="text" name="cold-tire-pressures-fr" ng-model="card.new.tire.coldPressure.frontRight" placeholder="FRONT RIGHT">
+						<input type="text" name="cold-tire-pressures-rl" ng-model="card.new.tire.coldPressure.rearLeft" placeholder="REAR LEFT">
+						<input type="text" name="cold-tire-pressures-rr" ng-model="card.new.tire.coldPressure.rearRight" placeholder="REAR RIGHT">
+					</div>
+					<label for="hotPress"><span ng-click="show[13] = !show[13]"><i ng-class="show[13] ? 'fa fa-minus-square-o' : 'fa fa-plus-square-o'"></i>Hot Pressures</span></label>
+					<div ng-show="show[13]">	
+						<input id ="hotPress" type="text" name="hot-tire-pressures-fl" ng-model="card.new.tire.hotPressure.frontLeft" placeholder="FRONT LEFT">
+						<input type="text" name="hot-tire-pressures-fr" ng-model="card.new.tire.hotPressure.frontRight" placeholder="FRONT RIGHT">
+						<input type="text" name="hot-tire-pressures-rl" ng-model="card.new.tire.hotPressure.rearLeft" placeholder="REAR LEFT">
+						<input type="text" name="hot-tire-pressures-rr" ng-model="card.new.tire.hotPressure.rearRight" placeholder="REAR RIGHT">
+					</div>
+				</div>
+			</div>
+			<button ng-click="card.add.submit()">Add</button>
+			<button class="cancel" ng-click="card.add.cancel()">Cancel</button>
+		</form>
+	</div>
+</div>
