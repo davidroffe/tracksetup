@@ -1,32 +1,41 @@
 angular.module('tsApp').controller('addNoteCtrl', ['$scope', '$http', '$stateParams', '$modalInstance', function($scope, $http, $stateParams, $modalInstance){
 	$scope.carId = $stateParams.id;
+	$scope.note.new = {};
 
 	$scope.note.add.submit = function(){
 
-		$http.post('/api/addnote/' + $scope.carId, $scope.note.new)
-		.success(function(data){
+		$scope.note.add.error = [];
 
-			$http.get('/api/getnotes/' + $scope.carId)
-			.success(function(data) {
+		if($scope.note.new.title === '' || $scope.note.new.title === undefined) $scope.note.add.error[0] = 'error';
+		if($scope.note.new.message === '' || $scope.note.new.message === undefined) $scope.note.add.error[1] = 'error';
 
-				$scope.note.data = data;
+		if($scope.note.add.error.length < 1){
+
+			$http.post('/api/addnote/' + $scope.carId, $scope.note.new)
+			.success(function(data){
+
+				$http.get('/api/getnotes/' + $scope.carId)
+				.success(function(data) {
+
+					$scope.note.data = data;
+
+				})
+				.error(function(data, status) {
+
+					console.log('Could not retreive notes, error is: ' + data.message);
+
+				});
+
+				$modalInstance.close();
 
 			})
-			.error(function(data, status) {
+			.error(function(data, status){
 
-				console.log('Could not retreive notes, error is: ' + data.message);
+				console.log('Could not add note: ' + data.message);
 
 			});
-
-			$scope.note.add.modalInstance.close();
-
-		})
-		.error(function(data, status){
-
-			console.log('Could not add note: ' + data.message);
-
-		});
-
+			console.log('success');
+		}
 	};
 
 

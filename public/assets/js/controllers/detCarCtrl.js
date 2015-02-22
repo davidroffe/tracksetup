@@ -1,8 +1,14 @@
-angular.module('tsApp').controller('detCarCtrl', ['$scope', '$http', '$stateParams', '$modal', function($scope, $http, $stateParams, $modal){
+angular.module('tsApp').controller('detCarCtrl', ['$scope', '$resource', '$stateParams', '$modal', function($scope, $resource, $stateParams, $modal){
 	//Car
 	$scope.carId = $stateParams.id;
 	$scope.car = {};
 	$scope.car.edit = {};
+
+	var Car = $resource('/api/getcar/' + $scope.carId);
+
+	Car.get(function(data){
+		$scope.car.data = data;
+	});
 
 
 	//Card
@@ -18,6 +24,18 @@ angular.module('tsApp').controller('detCarCtrl', ['$scope', '$http', '$statePara
 	$scope.card.del.canOrUndoLabel = 'Cancel';
 	$scope.card.del.canOrUndoIcon = 'fa fa-lg fa-arrow-circle-o-left';
 
+	var Card = $resource('/api/getcards/' + $scope.carId);
+
+	Card.query(function(data){
+		$scope.card.data = data;
+
+		$scope.card.dataCopy = data.slice();
+
+		for (var i = 0; i < $scope.card.data.length; i++){ 
+			$scope.card.del.chkBox[i] = 'check-sel fa fa-square-o';
+		}
+	});
+
 
 	//Notes
 	$scope.note = {};
@@ -32,41 +50,9 @@ angular.module('tsApp').controller('detCarCtrl', ['$scope', '$http', '$statePara
 	$scope.note.del.canOrUndoLabel = 'Cancel';
 	$scope.note.del.canOrUndoIcon = 'fa fa-lg fa-arrow-circle-o-left';
 
+	var Note = $resource('/api/getnotes/' + $scope.carId);
 
-	$http.get('/api/getcar/' + $scope.carId)
-	.success(function(data) {
-
-		$scope.car.data = data;
-
-	})
-	.error(function(data, status) {
-
-		console.log('Could not retreive car, error is: ' + status);
-
-	});
-
-
-	$http.get('/api/getcards/' + $scope.carId)
-	.success(function(data) {
-
-		$scope.card.data = data;
-
-		$scope.card.dataCopy = data.slice();
-
-		for (var i = 0; i < $scope.card.data.length; i++){ 
-			$scope.card.del.chkBox[i] = 'check-sel fa fa-square-o';
-		}
-
-	})
-	.error(function(data, status) {
-
-		console.log('Could not retreive cards, error is: ' + status);
-
-	});
-
-
-	$http.get('/api/getnotes/' + $scope.carId)
-	.success(function(data) {
+	Note.query(function(data){
 
 		$scope.note.data = data;
 
@@ -76,15 +62,9 @@ angular.module('tsApp').controller('detCarCtrl', ['$scope', '$http', '$statePara
 			$scope.note.del.chkBox[i] = 'check-sel fa fa-close';
 		}
 
-	})
-	.error(function(data, status) {
-
-		console.log('Could not retreive notes, error is: ' + data.message);
-
 	});
-
 	
-
+	//card delete methods
 	$scope.card.del.open = function () {
 		
 		if(!$scope.card.del.isOpen){
@@ -145,20 +125,15 @@ angular.module('tsApp').controller('detCarCtrl', ['$scope', '$http', '$statePara
 			$http.post('/api/delcards/' + $scope.carId, $scope.card.del.toDel)
 			.success(function(data){
 
-				$http.get('/api/getcards/' + $scope.carId)
-				.success(function(data) {
-
+				Card.query(function(data){
 					$scope.card.data = data;
+
+					$scope.card.dataCopy = data.slice();
+
 					$scope.card.del.toDel = [];
 					$scope.card.del.cancelOrUndo();
 					$scope.card.del.canOrUndoLabel = 'Cancel';
 					$scope.card.del.canOrUndoIcon = 'fa fa-lg fa-arrow-circle-o-left';
-
-				})
-				.error(function(data, status) {
-
-					console.log('Could not retreive cards, error is: ' + status);
-
 				});
 
 			})
@@ -169,42 +144,8 @@ angular.module('tsApp').controller('detCarCtrl', ['$scope', '$http', '$statePara
 		
 	}
 
-	$scope.card.add.open = function() {
 
-		$scope.card.add.modalInstance = $modal.open({
-			templateUrl: './views/addCardView.html',
-			controller: 'addCardCtrl',
-			scope: $scope,
-			backdrop: 'static'
-		});
-
-	};
-
-	/*
-	$scope.card.add.submit = function() {
-
-		$http.post('/api/addcard/' + $scope.carId, $scope.card.new)
-		.success(function(data) {
-
-			$scope.card.add.modalInstance.close();
-
-		})
-		.error(function(data, error) {
-
-			console.log('error is: ' + error);
-
-		});
-	};
-
-
-	$scope.card.add.cancel = function() {
-
-		$scope.card.add.modalInstance.close();
-
-	}*/
-
-
-	//Note Section
+	//Note delete methods
 
 	$scope.note.del.open = function () {
 		
@@ -267,19 +208,16 @@ angular.module('tsApp').controller('detCarCtrl', ['$scope', '$http', '$statePara
 			$http.post('/api/delnotes/' + $scope.carId, $scope.note.del.toDel)
 			.success(function(data){
 
-				$http.get('/api/getnotes/' + $scope.carId)
-				.success(function(data) {
+				Note.query(function(data){
 
 					$scope.note.data = data;
+
+					$scope.note.dataCopy = data.slice();
+
 					$scope.note.del.toDel = [];
 					$scope.note.del.cancelOrUndo();
 					$scope.note.del.canOrUndoLabel = 'Cancel';
 					$scope.note.del.canOrUndoIcon = 'fa fa-lg fa-arrow-circle-o-left';
-
-				})
-				.error(function(data, status) {
-
-					console.log('Could not retreive cards, error is: ' + status);
 
 				});
 
@@ -291,17 +229,22 @@ angular.module('tsApp').controller('detCarCtrl', ['$scope', '$http', '$statePara
 		
 	}
 
-	$scope.note.new = {};
 
+	//Modal triggers
+	$scope.card.add.open = function() {
+
+		$scope.card.add.modalInstance = $modal.open({
+			templateUrl: './views/addCardView.html',
+			controller: 'addCardCtrl',
+			scope: $scope,
+			backdrop: 'static'
+		});
+
+	};
+	
 	$scope.note.add.open = function(ind) {
 
-		if(ind >= 0){
-			$scope.note.new.title = $scope.note.data[ind].title;
-			$scope.note.new.message = $scope.note.data[ind].message;
-		} else {
-			$scope.note.new ={};
-		}
-		$scope.note.add.modalInstance = $modal.open({
+		$modal.open({
 			templateUrl: './views/addNoteView.html',
 			controller: 'addNoteCtrl',
 			scope: $scope,
@@ -323,43 +266,6 @@ angular.module('tsApp').controller('detCarCtrl', ['$scope', '$http', '$statePara
 		});
 
 	};
-
-	$scope.test = 'Test';
-	/*
-	$scope.note.add.submit = function(){
-
-		$http.post('/api/addnote/' + $scope.carId, $scope.note.new)
-		.success(function(data){
-
-			$http.get('/api/getnotes/' + $scope.carId)
-			.success(function(data) {
-
-				$scope.note.data = data;
-
-			})
-			.error(function(data, status) {
-
-				console.log('Could not retreive notes, error is: ' + data.message);
-
-			});
-
-			$scope.note.add.modalInstance.close();
-
-		})
-		.error(function(data, status){
-
-			console.log('Could not add note: ' + data.message);
-
-		});
-
-	};
-
-
-	$scope.note.add.cancel = function() {
-
-		$scope.note.add.modalInstance.close();
-
-	};*/
 
 
 	//Edit Car Modal
@@ -390,34 +296,16 @@ angular.module('tsApp').controller('detCarCtrl', ['$scope', '$http', '$statePara
 			})
 			.success(function(data){
 
-				$http.get('/api/getcar/' + $scope.carId)
-				.success(function(data) {
+				Car.get(function(data){
 					$scope.car.data = data;
-
-				})
-				.error(function(data, status) {
-
-					console.log('Could not retreive car, error is: ' + status);
-
 				});
+
 			})
 			.error(function(err){
 
 			});
 		}
 	});
-
-	
-	$scope.car.edit.submit = function() {
-
-
-	};
-	
-	$scope.car.edit.cancel = function() {
-
-		$scope.car.edit.modalInstance.close();
-
-	};
 
 
 }]);

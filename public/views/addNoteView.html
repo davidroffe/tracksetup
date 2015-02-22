@@ -3,11 +3,11 @@
 		<h2>Note</h2>
 		<form>
 			<div>
-				<label>Title</label>
+				<label ng-class="note.add.error[0]">Title</label>
 				<input type="text" name="name" ng-model="note.new.title">
 			</div>
 			<div>
-				<label>Notes</label>
+				<label ng-class="note.add.error[1]">Notes</label>
 				<textarea ng-model="note.new.message"></textarea>
 			</div>
 			<button ng-click="note.add.submit()">Add</button>

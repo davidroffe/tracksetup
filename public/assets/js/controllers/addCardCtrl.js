@@ -1,6 +1,9 @@
 angular.module('tsApp').controller('addCardCtrl', ['$scope', '$http', '$location', '$stateParams', '$modalInstance', function($scope, $http, $location, $stateParams, $modalInstance) {
 	var carId = $stateParams.id;
 	$scope.show = [];
+	$scope.card = {};
+	$scope.card.add = {};
+	$scope.card.new = {};
 	$scope.card.add.expandToggleLabel = 'Expand All';
 	$scope.card.add.isExpand = false;
 
@@ -9,23 +12,54 @@ angular.module('tsApp').controller('addCardCtrl', ['$scope', '$http', '$location
 	}
 	$scope.card.add.submit = function() {
 
-		$http.post('/api/addcard/' + $scope.carId, $scope.card.new)
-		.success(function(data) {
+		$scope.error = [];
 
-			$scope.card.add.modalInstance.close();
+		console.log($scope.card.new.name);
 
-		})
-		.error(function(data, error) {
+		if($scope.card.new.name === '' || $scope.card.new.name === undefined) $scope.error[0] = 'error';
+		if($scope.card.new.track === '' || $scope.card.new.track === undefined) $scope.error[1] = 'error';
 
-			console.log('error is: ' + error);
+		if($scope.error.length < 1){
 
-		});
+			$http.post('/api/addcard/' + $scope.carId, $scope.card.new)
+			.success(function(data) {
+
+				$http.get('/api/getcards/' + $scope.carId)
+				.success(function(data) {
+
+					$scope.$parent.card.data = data;
+
+					$scope.$parent.card.dataCopy = data.slice();
+
+					for (var i = 0; i < $scope.$parent.card.data.length; i++){ 
+						$scope.$parent.card.del.chkBox[i] = 'check-sel fa fa-square-o';
+					}
+
+				})
+				.error(function(data, status) {
+
+					console.log('Could not retreive cards, error is: ' + status);
+
+				});
+
+				$scope.error = [];
+				$modalInstance.close();
+
+			})
+			.error(function(data, error) {
+
+				console.log('error is: ' + error);
+
+			});
+
+		}
 	};
 
 
 	$scope.card.add.cancel = function() {
 
-		$scope.card.add.modalInstance.close();
+		$scope.error = [];
+		$modalInstance.close();
 
 	}
 

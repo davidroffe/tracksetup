@@ -3,11 +3,11 @@
 		<h2>Add New Car</h2>
 		<form>
 			<div>
-				<label>Name</label>
+				<label ng-class="error[0]">Name</label>
 				<input type="text" name="name" ng-model="newCar.name">
 			</div>
 			<div>
-				<label>Year</label>
+				<label ng-class="error[1]">Year</label>
 				<select name="year" ng-model="newCar.year">
 					<option value="2007">2007</option>
 					<option value="2006">2006</option>
@@ -90,11 +90,11 @@
 				</select>
 			</div>
 			<div>
-				<label>Make</label>
+				<label ng-class="error[2]">Make</label>
 				<input type="text" name="make" ng-model="newCar.make">
 			</div>
 			<div>
-				<label>Model</label>
+				<label ng-class="error[3]">Model</label>
 				<input type="text" name="model" ng-model="newCar.model">
 			</div>
 			<button ng-click="submit()">Add</button>

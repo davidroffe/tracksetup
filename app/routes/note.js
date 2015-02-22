@@ -1,5 +1,5 @@
 var Note = require('../models/note.js');
-var Car = require('../models/car.js');
+var Car  = require('../models/car.js');
 
 module.exports = {
 	getNotes: function(req, res){

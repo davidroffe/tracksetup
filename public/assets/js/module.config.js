@@ -8,7 +8,7 @@ angular.module('tsApp').config(function($locationProvider){
   });
 });
 
-angular.module('tsApp').factory('Auth', ['$cookies', '$http', '$location', '$resource', function($cookies, $http, $location, $resource){
+angular.module('tsApp').factory('Auth', ['$cookies', '$http', '$location', function($cookies, $http, $location){
 
   var auth = {
 
@@ -31,6 +31,8 @@ angular.module('tsApp').factory('Auth', ['$cookies', '$http', '$location', '$res
         console.log('Unauthorized!');
         event.preventDefault();
         $location.path('/');
+      } else if($cookies.auth && newUrl === auth.guestUrl){
+        event.preventDefault();
       }
     }
   };

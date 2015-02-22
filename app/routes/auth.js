@@ -1,4 +1,4 @@
-var jwt = require('jwt-simple');
+var jwt  = require('jwt-simple');
 var User = require('../models/user.js');
 //var secret = require('../../config/secret')();
 
@@ -51,7 +51,7 @@ var auth = {
 		var email = req.body.email || '',
 			password = req.body.password || '',
 			emailRegEx = /[\w\.]+@[\w\.]+/;
-
+			console.log('Email is: ' + email);
 		if ( email === '' || !emailRegEx.test(email) || password === '' ) {
 			res.status(401);
 			res.json({

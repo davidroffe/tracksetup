@@ -1,48 +1,74 @@
-angular.module('tsApp').controller('cardCtrl', ['$scope', '$http', '$stateParams', function($scope, $http, $stateParams){
-	//implement a service to make a get request and grab the card data for the card id in the URI
+angular.module('tsApp').controller('cardCtrl', ['$scope', '$http', '$stateParams', '$modal', function($scope, $http, $stateParams, $modal){
+	var cardId = $stateParams.id;
+
 	$http.get('/api/getcard/' + $stateParams.id)
 	.success(function(data){
 		$scope.card = data;
-		console.log(data.toe);
 	})
 	.error(function(data, err){
 		console.log("Can't fetch data because of: " + err);
 	});
-	/*$scope.card = {
-					id: '634',
-					engine: {},
-					suspension: {
-						camber: {
-							fl: -1,
-							fr: -1,
-							rl: -1.5,
-							rr: -1.5,
-						},
-						toe: {
-							front: 0,
-							rear: 0
-						},
-						caster: {
-							left: 0,
-							right: 0
-						},
-						spring: {
-							length: {
-								fl: 5,
-								fr: 5,
-								rl: 6,
-								rr: 6
-							},
-							rate: {
-								fl: 350,
-								fr: 350,
-								rl: 750,
-								rr: 750
-							}
-						}
-					},
-					notes: {
-						'intake notes' : 'Intake came loose, get new clamp.'
-					}
-				};*/
+
+	$scope.edit = function(){
+
+		$scope.card.copy = copyObj($scope.card);
+		console.log($scope.card.copy.toe);
+
+		var modalInstance = $modal.open({
+			templateUrl: '/views/editCardView.html',
+			scope: $scope,
+			backdrop: 'static'
+		});
+
+		$scope.cancel = function() {
+			modalInstance.close();
+		};
+
+		$scope.submit = function() {
+
+			$scope.error = [];
+
+			console.log($scope.card.copy.name);
+
+			if($scope.card.copy.name === '' || $scope.card.copy.name === undefined) $scope.error[0] = 'error';
+			if($scope.card.copy.track === '' || $scope.card.copy.track === undefined) $scope.error[1] = 'error';
+
+			if($scope.error.length < 1){
+				$http.post('/api/editcard/' + cardId, $scope.card.copy)
+				.success(function(data){
+
+					$http.get('/api/getcard/' + $stateParams.id)
+					.success(function(data){
+						$scope.card = data;
+
+						$scope.card.copy = copyObj(data);
+						console.log($scope.card.copy.toe);
+					})
+					.error(function(data, err){
+						console.log("Can't fetch data because of: " + err);
+					});
+
+				})
+				.error(function(err){
+
+				});
+				console.log('Passed!');
+				modalInstance.close();
+			}
+		};
+	};
+
+	var copyObj = function(obj){
+		if(obj == null || "object" != typeof obj) return obj;
+
+		var copy = {};
+
+		for (var prop in obj) {
+
+			if(obj.hasOwnProperty(prop)) copy[prop] = copyObj(obj[prop]);
+		}
+
+		return copy;
+	}
+	
 }]);

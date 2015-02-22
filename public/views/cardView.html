@@ -1,3 +1,4 @@
+<h3 ng-click="edit()" class="card edit"><i class="fa fa-pencil fa-lg"></i>Edit</h3>
 <div class="container">
 	<table class="card">
 		<thead>
@@ -21,7 +22,7 @@
 			<tr ng-show="card.toe">
 				<td class="lft-al ctg-1"><i class="fa fa-chevron-circle-right"></i>Toe</td>
 				<td class="sec">{{card.toe.front}}</td>
-				<td>{{card.toe.front}}</td>
+				<td>{{card.toe.rear}}</td>
 			</tr>
 			<tr ng-show="card.camber">
 				<td class="lft-al ctg-1"><i class="fa fa-chevron-circle-right"></i>Camber</td>
@@ -47,6 +48,11 @@
 				<td class="lft-al ctg-2"><i class="fa fa-chevron-circle-right"></i>Rate</td>
 				<td class="sec">{{card.spring.rate.frontLeft}} | {{card.spring.rate.frontRight}}</td>
 				<td>{{card.spring.rate.rearLeft}} | {{card.spring.rate.rearRight}}</td>
+			</tr>
+			<tr ng-show="card.swaybar">
+				<td class="lft-al ctg-1"><i class="fa fa-chevron-circle-right"></i>Swaybars</td>
+				<td class="sec">{{card.swaybar.front}}</td>
+				<td>{{card.swaybar.rear}}</td>
 			</tr>
 			<tr ng-show="card.shock">
 				<td class="lft-al ctg-1"><i class="fa fa-chevron-circle-down"></i>Shocks</td>

@@ -1,5 +1,5 @@
 var User = require('../models/user.js');
-var Car = require('../models/car.js');
+var Car  = require('../models/car.js');
 var Card = require('../models/card.js');
 
 module.exports = {
@@ -112,5 +112,19 @@ module.exports = {
 		});
 
 		res.status(200).end();
+	},
+
+	editCard: function(req, res){
+		var cardId = req.param('cardId');
+		var newData = req.body;
+
+		Card.findOne({_id:cardId}, function(err, card){
+			if(card){
+				card.update(newData, function(err, numbAffected, raw){
+					console.log('Number affected is: ' + numbAffected);
+				});
+			}
+			res.status(200).end();
+		});
 	}
 };

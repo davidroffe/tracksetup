@@ -414,6 +414,7 @@ body.retract > #left-nav i.fa {
   position: absolute;
   top: 0;
   left: 0;
+  min-height: 440px;
   height: 100%;
   width: 100%;
   background: url(/assets/img/panel_bg.jpg);
@@ -550,7 +551,8 @@ body.retract > #left-nav i.fa {
 	color: #A8A8A8;
 }
 
-#del-card {
+#del-card, #del-note {
+  height: 23px;
   float: left;
   width: 86px;
 }
@@ -614,9 +616,8 @@ body.retract > #left-nav i.fa {
   transition: opacity 0.17s ease;
 }
 
-#add-card > a:hover,
-#del-card > a:hover {
-  width: 65px;
+#add-card > a:hover {
+  width: 55px;
   transition: width 0.25s ease;
 }
 
@@ -712,11 +713,6 @@ body.retract > #left-nav i.fa {
   height: 60px;
 }
 
-#del-note {
-  float: left;
-  width: 86px;
-}
-
 #del-note > a {
   display: block;
   float: left;
@@ -756,7 +752,13 @@ body.retract > #left-nav i.fa {
 }
 
 #add-note > a:hover,
-#del-note > a:hover {
+#add-card > a:hover {
+  width: 55px;
+  transition: width 0.25s ease;
+}
+
+#del-note > a:hover,
+#del-card > a:hover {
   width: 65px;
   transition: width 0.25s ease;
 }
@@ -810,6 +812,28 @@ p.col-3 {
 }
 
 /*Individual Card View*/
+.card.edit {
+  position: fixed;
+  cursor: pointer;
+  right: -40px;
+  top: 200px;
+  background: #FFF;
+  border: 1px solid #CCC;
+  border-radius: 5px;
+  border-right-width: 0;
+  padding: 15px 10px 15px 10px;
+  transition: right 0.5s ease;
+}
+
+.card.edit:hover {
+    right: -5px;
+    transition: right 0.5s ease;
+}
+
+.card.edit > i {
+  margin: 0px 10px 0 7px;
+}
+
 table.card {
   margin: auto;
 }
@@ -1062,4 +1086,5 @@ p.add.cards.expand {
 .note.body {
   font-size: 20px;
   color: #666;
+  background-color: #FFF;
 }

@@ -1,0 +1,173 @@
+<div class="add cards">
+	<div class="form-container">
+		<h2>Edit Card</h2>
+		<form>
+			<div>
+				<label ng-class="error[0]" for="cardName">Name</label>
+				<div>
+					<input class="single" type="text" id="cardName" name="name" ng-model="card.copy.name" placeholder="eg Wet Weather">
+				</div>
+			</div>
+			<div>
+				<label ng-class="error[1]"for="trackName">Track</label>
+				<div>
+					<input id="trackName" class="single" type="text" name="track" ng-model="card.copy.track" placeholder="eg Road Atlanta">
+				</div>
+			</div>
+			<div>
+				<label for="toe">Toe</label>
+				<div>
+					<input id="toe" type="text" name="toe-f" ng-model="card.copy.toe.front" placeholder="FRONT">
+					<input type="text" name="toe-r" ng-model="card.copy.toe.rear" placeholder="REAR">
+				</div>
+			</div>
+			<div>
+				<label for="camber">Camber</label>
+				<div>
+					<input id="camber" type="text" name="camber-fl" ng-model="card.copy.camber.frontLeft" placeholder="FRONT LEFT">
+					<input type="text" name="camber-fr" ng-model="card.copy.camber.frontRight" placeholder="FRONT RIGHT">
+					<input type="text" name="camber-rl" ng-model="card.copy.camber.rearLeft" placeholder="REAR LEFT">
+					<input type="text" name="camber-rr" ng-model="card.copy.camber.rearRight" placeholder="REAR RIGHT">
+				</div>
+			</div>
+			<div>
+				<label for="caster">Caster</label>
+				<div>
+					<input id="caster" type="text" name="caster-f" ng-model="card.copy.caster.left" placeholder="LEFT">
+					<input type="text" name="caster-r" ng-model="card.copy.caster.right" placeholder="RIGHT">
+				</div>
+			</div>
+			<div>
+				<label>Springs</label>
+				<div class="ctg-2">
+					<label for="rates">Rates</label>
+					<div>
+						<input id="rates" type="text" name="spring-rates-fl" ng-model="card.copy.spring.rate.frontLeft" placeholder="FRONT LEFT">
+						<input type="text" name="spring-rates-fr" ng-model="card.copy.spring.rate.frontRight" placeholder="FRONT RIGHT">
+						<input type="text" name="spring-rates-rl" ng-model="card.copy.spring.rate.rearLeft" placeholder="REAR LEFT">
+						<input type="text" name="spring-rates-rr" ng-model="card.copy.spring.rate.rearRight" placeholder="REAR RIGHT">
+					</div>
+					<label for="length">Length</label>
+					<div >
+						<input id="length" type="text" name="spring-length-fl" ng-model="card.copy.spring.length.frontLeft" placeholder="FRONT LEFT">
+						<input type="text" name="spring-length-fr" ng-model="card.copy.spring.length.frontRight" placeholder="FRONT RIGHT">
+						<input type="text" name="spring-length-rl" ng-model="card.copy.spring.length.rearLeft" placeholder="REAR LEFT">
+						<input type="text" name="spring-length-rr" ng-model="card.copy.spring.length.rearRight" placeholder="REAR RIGHT">
+					</div>
+				</div>
+			</div>
+			<div>
+				<label for="r1">Shocks</label>
+				<div>
+					<div>						
+						<input type="radio" id="r1" name="shockType" ng-model="shockType" value="one">
+						<label for="r1" class="radio">1-Way</label>
+						<input type="radio" id="r2" name="shockType" ng-model="shockType" value="two">
+						<label for="r2" class="radio">2-Way</label>
+						<input type="radio" id="r3" name="shockType" ng-model="shockType" value="three">
+						<label for="r3" class="radio">3-Way</label>
+						<input type="radio" id="r4" name="shockType" ng-model="shockType" value="four">
+						<label for="r4" class="radio">4-Way</label>
+					</div>
+					<div class="ctg-2" ng-show="shockType == 'one'">
+						<input type="text" name="spring-length-fl" ng-model="card.copy.shock.oneWay.frontLeft" placeholder="FRONT LEFT">
+						<input type="text" name="spring-length-fr" ng-model="card.copy.shock.oneWay.frontRight" placeholder="FRONT RIGHT">
+						<input type="text" name="spring-length-rl" ng-model="card.copy.shock.oneWay.rearLeft" placeholder="REAR LEFT">
+						<input type="text" name="spring-length-rr" ng-model="card.copy.shock.oneWay.rearRight" placeholder="REAR RIGHT">
+					</div>
+					<div class="ctg-2" ng-show="shockType == 'two'">
+						<label>Rebound</label>
+						<input type="text" name="spring-length-fl" ng-model="card.copy.shock.twoWay.rebound.frontLeft" placeholder="FRONT LEFT">
+						<input type="text" name="spring-length-fr" ng-model="card.copy.shock.twoWay.rebound.frontRight" placeholder="FRONT RIGHT">
+						<input type="text" name="spring-length-rl" ng-model="card.copy.shock.twoWay.rebound.rearLeft" placeholder="REAR LEFT">
+						<input type="text" name="spring-length-rr" ng-model="card.copy.shock.twoWay.rebound.rearRight" placeholder="REAR RIGHT">
+						<label>Compression</label>
+						<input type="text" name="spring-length-fl" ng-model="card.copy.shock.twoWay.compression.frontLeft" placeholder="FRONT LEFT">
+						<input type="text" name="spring-length-fr" ng-model="card.copy.shock.twoWay.compression.frontRight" placeholder="FRONT RIGHT">
+						<input type="text" name="spring-length-rl" ng-model="card.copy.shock.twoWay.compression.rearLeft" placeholder="REAR LEFT">
+						<input type="text" name="spring-length-rr" ng-model="card.copy.shock.twoWay.compression.rearRight" placeholder="REAR RIGHT">
+					</div>
+					<div class="ctg-2" ng-show="shockType == 'three'">
+						<label>Rebound</label>
+						<input type="text" name="spring-length-fl" ng-model="card.copy.shock.threeWay.rebound.frontLeft" placeholder="FRONT LEFT">
+						<input type="text" name="spring-length-fr" ng-model="newcard.copy.shock.threeWay.rebound.frontRight" placeholder="FRONT RIGHT">
+						<input type="text" name="spring-length-rl" ng-model="newcard.copy.shock.threeWay.rebound.rearLeft" placeholder="REAR LEFT">
+						<input type="text" name="spring-length-rr" ng-model="newcard.copy.shock.threeWay.rebound.rearRight" placeholder="REAR RIGHT">
+						<label>Compression</label>
+						<label>Low Speed</label>
+						<input type="text" name="spring-length-fl" ng-model="card.copy.shock.threeWay.compression.lowSpeed.frontLeft" placeholder="FRONT LEFT">
+						<input type="text" name="spring-length-fr" ng-model="card.copy.shock.threeWay.compression.lowSpeed.frontRight" placeholder="FRONT RIGHT">
+						<input type="text" name="spring-length-rl" ng-model="card.copy.shock.threeWay.compression.lowSpeed.rearLeft" placeholder="REAR LEFT">
+						<input type="text" name="spring-length-rr" ng-model="card.copy.shock.threeWay.compression.lowSpeed.rearRight" placeholder="REAR RIGHT">
+						<label>High Speed</label>
+						<input type="text" name="spring-length-fl" ng-model="card.copy.shock.threeWay.compression.highSpeed.frontLeft" placeholder="FRONT LEFT">
+						<input type="text" name="spring-length-fr" ng-model="card.copy.shock.threeWay.compression.highSpeed.frontRight" placeholder="FRONT RIGHT">
+						<input type="text" name="spring-length-rl" ng-model="card.copy.shock.threeWay.compression.highSpeed.rearLeft" placeholder="REAR LEFT">
+						<input type="text" name="spring-length-rr" ng-model="card.copy.shock.threeWay.compression.highSpeed.rearRight" placeholder="REAR RIGHT">
+					</div>
+					<div class="ctg-2" ng-show="shockType == 'four'">
+						<label>Rebound</label>
+						<label>Low Speed</label>
+						<input type="text" name="spring-length-fl" ng-model="card.copy.shock.threeWay.rebound.lowSpeed.frontLeft" placeholder="FRONT LEFT">
+						<input type="text" name="spring-length-fr" ng-model="card.copy.shock.threeWay.rebound.lowSpeed.frontRight" placeholder="FRONT RIGHT">
+						<input type="text" name="spring-length-rl" ng-model="card.copy.shock.threeWay.rebound.lowSpeed.rearLeft" placeholder="REAR LEFT">
+						<input type="text" name="spring-length-rr" ng-model="card.copy.shock.threeWay.rebound.lowSpeed.rearRight" placeholder="REAR RIGHT">
+						<label>High Speed</label>
+						<input type="text" name="spring-length-fl" ng-model="card.copy.shock.threeWay.rebound.highSpeed.frontLeft" placeholder="FRONT LEFT">
+						<input type="text" name="spring-length-fr" ng-model="card.copy.shock.threeWay.rebound.highSpeed.frontRight" placeholder="FRONT RIGHT">
+						<input type="text" name="spring-length-rl" ng-model="card.copy.shock.threeWay.rebound.highSpeed.rearLeft" placeholder="REAR LEFT">
+						<input type="text" name="spring-length-rr" ng-model="card.copy.shock.threeWay.rebound.highSpeed.rearRight" placeholder="REAR RIGHT">
+						<label>Compression</label>
+						<label>Low Speed</label>
+						<input type="text" name="spring-length-fl" ng-model="card.copy.shock.threeWay.compression.lowSpeed.frontLeft" placeholder="FRONT LEFT">
+						<input type="text" name="spring-length-fr" ng-model="card.copy.shock.threeWay.compression.lowSpeed.frontRight" placeholder="FRONT RIGHT">
+						<input type="text" name="spring-length-rl" ng-model="card.copy.shock.threeWay.compression.lowSpeed.rearLeft" placeholder="REAR LEFT">
+						<input type="text" name="spring-length-rr" ng-model="card.copy.shock.threeWay.compression.lowSpeed.rearRight" placeholder="REAR RIGHT">
+						<label>High Speed</label>
+						<input type="text" name="spring-length-fl" ng-model="card.copy.shock.threeWay.compression.highSpeed.frontLeft" placeholder="FRONT LEFT">
+						<input type="text" name="spring-length-fr" ng-model="card.copy.shock.threeWay.compression.highSpeed.frontRight" placeholder="FRONT RIGHT">
+						<input type="text" name="spring-length-rl" ng-model="card.copy.shock.threeWay.compression.highSpeed.rearLeft" placeholder="REAR LEFT">
+						<input type="text" name="spring-length-rr" ng-model="card.copy.shock.threeWay.compression.highSpeed.rearRight" placeholder="REAR RIGHT">
+					</div>
+				</div>
+			</div>
+			<div>
+				<label for="cornWeights">Corner Weights</label>
+				<div>	
+					<input id="cornWeights" type="text" name="corner-weights-fl" ng-model="card.copy.cornerWeight.frontLeft" placeholder="FRONT LEFT">
+					<input type="text" name="corner-weights-fr" ng-model="card.copy.cornerWeight.frontRight" placeholder="FRONT RIGHT">
+					<input type="text" name="corner-weights-rl" ng-model="card.copy.cornerWeight.rearLeft" placeholder="REAR LEFT">
+					<input type="text" name="corner-weights-rr" ng-model="card.copy.cornerWeight.rearRight" placeholder="REAR RIGHT">
+				</div>
+			</div>
+			<div>
+				<label for="swaybars">Swaybars</label>
+				<div>	
+					<input id="swaybars" type="text" name="swaybars-f" ng-model="card.copy.swaybar.front" placeholder="FRONT">
+					<input type="text" name="swaybars-r" ng-model="card.copy.swaybar.rear" placeholder="REAR">
+				</div>
+			</div>
+			<div>
+				<label>Tires</label>
+				<div class="ctg-2">
+					<label for="coldPress">Cold Pressures</label>
+					<div>	
+						<input id ="coldPress" type="text" name="cold-tire-pressures-fl" ng-model="card.copy.tire.coldPressure.frontLeft" placeholder="FRONT LEFT">
+						<input type="text" name="cold-tire-pressures-fr" ng-model="card.copy.tire.coldPressure.frontRight" placeholder="FRONT RIGHT">
+						<input type="text" name="cold-tire-pressures-rl" ng-model="card.copy.tire.coldPressure.rearLeft" placeholder="REAR LEFT">
+						<input type="text" name="cold-tire-pressures-rr" ng-model="card.copy.tire.coldPressure.rearRight" placeholder="REAR RIGHT">
+					</div>
+					<label for="hotPress">Hot Pressures</label>
+					<div>	
+						<input id ="hotPress" type="text" name="hot-tire-pressures-fl" ng-model="card.copy.tire.hotPressure.frontLeft" placeholder="FRONT LEFT">
+						<input type="text" name="hot-tire-pressures-fr" ng-model="card.copy.tire.hotPressure.frontRight" placeholder="FRONT RIGHT">
+						<input type="text" name="hot-tire-pressures-rl" ng-model="card.copy.tire.hotPressure.rearLeft" placeholder="REAR LEFT">
+						<input type="text" name="hot-tire-pressures-rr" ng-model="card.copy.tire.hotPressure.rearRight" placeholder="REAR RIGHT">
+					</div>
+				</div>
+			</div>
+			<button ng-click="submit()">Submit</button>
+			<button class="cancel" ng-click="cancel()">Cancel</button>
+		</form>
+	</div>
+</div>

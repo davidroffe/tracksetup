@@ -7,7 +7,7 @@
 	<div id="car-cards">
 		<div id="cards-title">	
 			<div id="del-card">
-				<a ng-class="card.del.keepOpen" ng-click="card.del.open()">
+				<a ng-show="card.dataCopy[0]" ng-class="card.del.keepOpen" ng-click="card.del.open()">
 					<i class="fa fa-minus fa-lg"></i>
 					<span ng-class="card.del.keepOpen">{{card.del.delButton}}</span>
 				</a>
@@ -35,7 +35,7 @@
 	<div id="car-notes">
 		<div id="notes-title">
 			<div id="del-note">
-				<a ng-click="note.del.open()" ng-class="note.del.keepOpen">
+				<a ng-show="note.dataCopy[0]" ng-click="note.del.open()" ng-class="note.del.keepOpen">
 					<i class="fa fa-minus fa-lg"></i>
 					<span ng-class="note.del.keepOpen">{{note.del.delButton}}</span>
 				</a>

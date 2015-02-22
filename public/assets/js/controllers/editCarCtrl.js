@@ -29,28 +29,44 @@ angular.module('tsApp').controller('editCarCtrl', ['$scope', '$http', '$location
 	})
 	
 	$scope.car.edit.submit = function() {
-
+		$scope.car.edit.error = [];
 		var newData = {};
 		var hasNewData = false;
 
 		if($scope.car.edit.name !== $scope.car.data.name){
-			newData.name = $scope.car.edit.name;
-			hasNewData = true;
+			if($scope.car.edit.name === '' || $scope.car.edit.name == undefined) {
+				$scope.car.edit.error[0] = 'error';
+			} else {
+				newData.name = $scope.car.edit.name;
+				hasNewData = true;
+			}
 		}
 		if($scope.car.edit.year !== $scope.car.data.year){
-			newData.year = $scope.car.edit.year;
-			hasNewData = true;
+			if($scope.car.edit.year === '' || $scope.car.edit.year == undefined) {
+				$scope.car.edit.error[1] = 'error';
+			} else {
+				newData.year = $scope.car.edit.year;
+				hasNewData = true;
+			}
 		}
 		if($scope.car.edit.make !== $scope.car.data.make){
-			newData.make = $scope.car.edit.make;
-			hasNewData = true;
+			if($scope.car.edit.make === '' || $scope.car.edit.make == undefined) {
+				$scope.car.edit.error[2] = 'error';
+			} else {
+				newData.make = $scope.car.edit.make;
+				hasNewData = true;
+			}
 		}
 		if($scope.car.edit.model !== $scope.car.data.model){
-			newData.model = $scope.car.edit.model;
-			hasNewData = true;
-		}	
+			if($scope.car.edit.model === '' || $scope.car.edit.model == undefined) {
+				$scope.car.edit.error[3] = 'error';
+			} else {
+				newData.model = $scope.car.edit.model;
+				hasNewData = true;
+			}
+		}
 
-		if(hasNewData){
+		if(hasNewData && $scope.car.edit.error.length === 0){
 			$http.post('/api/editcar/' + carId, newData)
 			.success(function(data){
 				$http.get('/api/getcar/' + $scope.carId)
@@ -70,8 +86,9 @@ angular.module('tsApp').controller('editCarCtrl', ['$scope', '$http', '$location
 			.error(function(err){
 
 			});
-		} else {
-			$scope.car.edit.error = 'Data has not changed';
+			console.log('Success!');
+		} else if(!hasNewData && $scope.car.edit.error.length === 0){
+			$modalInstance.close();
 		}
 	};
 	

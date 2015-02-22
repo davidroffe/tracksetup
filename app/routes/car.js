@@ -1,8 +1,8 @@
 var User = require('../models/user.js');
-var Car = require('../models/car.js');
+var Car  = require('../models/car.js');
 var Card = require('../models/card.js');
-var fs = require('fs');
-var gm = require('gm');
+var fs   = require('fs');
+var gm   = require('gm');
 
 module.exports = {
 	getCar : function(req, res){
@@ -35,10 +35,10 @@ module.exports = {
 					res.json(cars);
 				});
 			} else {
-				res.status(401);
+				res.status(20);
 				res.json({
-					status: 401,
-					message: "Not authorized"
+					status: 200,
+					message: "No cars."
 				});
 			}
 		});
@@ -127,7 +127,9 @@ module.exports = {
 								});
 							} else {
 								console.log('Finished resizing image and saving.');
-								fs.unlinkSync('./public' + car.avatar);
+								if(car.avatar.indexOf('/default/def.png') === -1)
+									fs.unlinkSync('./public' + car.avatar);
+
 								console.log(car.avatar + 'has been deleted.');
 								car.avatar = imageUrl;
 								car.save();

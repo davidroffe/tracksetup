@@ -64,7 +64,7 @@ angular.module('tsApp').controller('guestCtrl', ['$scope', '$http', '$location',
 				password: $scope.signUp.password
 			})
 			.success(function(data, status){
-				$location.url('/panel/cars');
+				$timeout(function(){$location.path('/panel/cars')}, 100);
 			})
 			.error(function(data, status){
 				$scope.signUp.errorMessage = data.message;

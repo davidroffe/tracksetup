@@ -4,13 +4,13 @@
 		<p class="add cards expand" ng-click="card.add.expandAll()"><i class="fa fa-arrows-v expand add cards"></i>{{card.add.expandToggleLabel}}</p>
 		<form>
 			<div>
-				<label for="cardName"><span ng-click="show[0] = !show[0]"><i ng-class="show[0] ? 'fa fa-minus-square-o' : 'fa fa-plus-square-o'"></i>Name</span></label>
+				<label for="cardName" ng-class="error[0]"><span ng-click="show[0] = !show[0]"><i ng-class="show[0] ? 'fa fa-minus-square-o' : 'fa fa-plus-square-o'"></i>Name</span></label>
 				<div ng-show="show[0]">
 					<input class="single" type="text" id="cardName" name="name" ng-model="card.new.name" placeholder="eg Wet Weather">
 				</div>
 			</div>
 			<div>
-				<label for="trackName"><span ng-click="show[1] = !show[1]"><i ng-class="show[1] ? 'fa fa-minus-square-o' : 'fa fa-plus-square-o'"></i>Track</span></label>
+				<label for="trackName" ng-class="error[1]"><span ng-click="show[1] = !show[1]"><i ng-class="show[1] ? 'fa fa-minus-square-o' : 'fa fa-plus-square-o'"></i>Track</span></label>
 				<div ng-show="show[1]">
 					<input id="trackName" class="single" type="text" name="track" ng-model="card.new.track" placeholder="eg Road Atlanta">
 				</div>
