@@ -1,14 +1,11 @@
-angular.module('tsApp').controller('detCarCtrl', ['$scope', '$resource', '$stateParams', '$modal', function($scope, $resource, $stateParams, $modal){
+angular.module('tsApp').controller('detCarCtrl', ['$scope', '$stateParams', '$modal', '$Data', function($scope, $stateParams, $modal, $Data){
 	//Car
 	$scope.carId = $stateParams.id;
 	$scope.car = {};
 	$scope.car.edit = {};
 
-	var Car = $resource('/api/getcar/' + $scope.carId);
 
-	Car.get(function(data){
-		$scope.car.data = data;
-	});
+	$scope.car.data = $Data.get({data: 'car', action:'getsingle', id:$scope.carId});
 
 
 	//Card
@@ -24,9 +21,8 @@ angular.module('tsApp').controller('detCarCtrl', ['$scope', '$resource', '$state
 	$scope.card.del.canOrUndoLabel = 'Cancel';
 	$scope.card.del.canOrUndoIcon = 'fa fa-lg fa-arrow-circle-o-left';
 
-	var Card = $resource('/api/getcards/' + $scope.carId);
 
-	Card.query(function(data){
+	$Data.query({data: 'card', action: 'getmulti', id: $scope.carId}, function(data){
 		$scope.card.data = data;
 
 		$scope.card.dataCopy = data.slice();
@@ -50,9 +46,8 @@ angular.module('tsApp').controller('detCarCtrl', ['$scope', '$resource', '$state
 	$scope.note.del.canOrUndoLabel = 'Cancel';
 	$scope.note.del.canOrUndoIcon = 'fa fa-lg fa-arrow-circle-o-left';
 
-	var Note = $resource('/api/getnotes/' + $scope.carId);
 
-	Note.query(function(data){
+	$Data.query({data: 'note', action: 'getmulti', id: $scope.carId}, function(data){
 
 		$scope.note.data = data;
 
@@ -113,7 +108,7 @@ angular.module('tsApp').controller('detCarCtrl', ['$scope', '$resource', '$state
 		$scope.card.data.splice(ind, 1);
 		$scope.card.del.canOrUndoLabel = 'Undo';
 		$scope.card.del.canOrUndoIcon = 'fa fa-lg fa-undo';
-	}
+	};
 
 
 
@@ -122,10 +117,9 @@ angular.module('tsApp').controller('detCarCtrl', ['$scope', '$resource', '$state
 		if($scope.card.del.toDel.length < 1) {
 			$scope.card.del.cancelOrUndo();
 		} else {
-			$http.post('/api/delcards/' + $scope.carId, $scope.card.del.toDel)
-			.success(function(data){
+			$Data.save({data: 'card', action: 'del', id: $scope.carId}, $scope.card.del.toDel, function(){
 
-				Card.query(function(data){
+				$Data.query({data: 'card', action: 'getmulti', id: $scope.carId}, function(data){
 					$scope.card.data = data;
 
 					$scope.card.dataCopy = data.slice();
@@ -136,13 +130,10 @@ angular.module('tsApp').controller('detCarCtrl', ['$scope', '$resource', '$state
 					$scope.card.del.canOrUndoIcon = 'fa fa-lg fa-arrow-circle-o-left';
 				});
 
-			})
-			.error(function(err){
-
 			});
 		}
 		
-	}
+	};
 
 
 	//Note delete methods
@@ -205,10 +196,9 @@ angular.module('tsApp').controller('detCarCtrl', ['$scope', '$resource', '$state
 		if($scope.note.del.toDel.length < 1) {
 			$scope.note.del.cancelOrUndo();
 		} else {
-			$http.post('/api/delnotes/' + $scope.carId, $scope.note.del.toDel)
-			.success(function(data){
+			$Data.save({data: 'note', action: 'del', id: $scope.carId}, $scope.note.del.toDel, function(){
 
-				Note.query(function(data){
+				$Data.query({data: 'note', action: 'getmulti', id: $scope.carId}, function(data){
 
 					$scope.note.data = data;
 
@@ -220,9 +210,6 @@ angular.module('tsApp').controller('detCarCtrl', ['$scope', '$resource', '$state
 					$scope.note.del.canOrUndoIcon = 'fa fa-lg fa-arrow-circle-o-left';
 
 				});
-
-			})
-			.error(function(err){
 
 			});
 		}
@@ -296,7 +283,7 @@ angular.module('tsApp').controller('detCarCtrl', ['$scope', '$resource', '$state
 			})
 			.success(function(data){
 
-				Car.get(function(data){
+				$Data.get({data: 'car', action: 'getsingle', id: $scope.carId}, function(data){
 					$scope.car.data = data;
 				});
 

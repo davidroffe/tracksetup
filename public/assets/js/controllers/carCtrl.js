@@ -1,10 +1,7 @@
-angular.module('tsApp').controller('carCtrl', ['$scope', '$resource', '$location', '$modal', function($scope, $resource, $location, $modal) {
+angular.module('tsApp').controller('carCtrl', ['$scope', '$Data', '$location', '$modal', function($scope, $Data, $location, $modal) {
 	
-	var Car = $resource('/api/getcars');
 
-	Car.query(function(data){
-		$scope.cars = data;
-	});
+	$scope.cars = $Data.query({data: 'car', action:'getmulti'});
 
 	$scope.addCarOpen = function() {
 		$modal.open({

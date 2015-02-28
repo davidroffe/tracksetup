@@ -1,4 +1,4 @@
-angular.module('tsApp').controller('addCarCtrl', ['$scope', '$http', '$location','$modalInstance', function($scope, $http, $location, $modalInstance) {
+angular.module('tsApp').controller('addCarCtrl', ['$scope', '$Data', '$location','$modalInstance', function($scope, $Data, $location, $modalInstance) {
 	$scope.newCar = {};
 
 	$scope.submit = function() {
@@ -15,25 +15,17 @@ angular.module('tsApp').controller('addCarCtrl', ['$scope', '$http', '$location'
 		if($scope.error.length < 1){
 
 			console.log($scope.newCar.name + ', ' + $scope.newCar.year + ', ' + $scope.newCar.make + ', ' + $scope.newCar.model);
-			$http.post('/api/addcar', {
+			$Data.save({data: 'car', action: 'add'}, {
 				avatar: '/assets/img/car/default/def.png',
 				name: $scope.newCar.name,
 				year: $scope.newCar.year,
 				make: $scope.newCar.make,
 				model: $scope.newCar.model
-			})
-			.success(function(data) {
-				$http.get('/api/getcars')
-				.success(function(data) {
-					$scope.$parent.cars = data;
-				})
-				.error(function(data, status) {
-					console.log('status is: ' + status);
-				});
+			}, function() {
+				
+				$scope.cars = $Data.query({data: 'car', action: 'getmulti'});
+
 				$modalInstance.close();
-			})
-			.error(function(data, error) {
-				console.log('error is: ' + error);
 			});
 	
 		}

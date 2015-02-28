@@ -1,6 +1,7 @@
-angular.module('tsApp').controller('addNoteCtrl', ['$scope', '$http', '$stateParams', '$modalInstance', function($scope, $http, $stateParams, $modalInstance){
+angular.module('tsApp').controller('addNoteCtrl', ['$scope', '$Data', '$stateParams', '$modalInstance', function($scope, $Data, $stateParams, $modalInstance){
 	$scope.carId = $stateParams.id;
 	$scope.note.new = {};
+
 
 	$scope.note.add.submit = function(){
 
@@ -11,30 +12,21 @@ angular.module('tsApp').controller('addNoteCtrl', ['$scope', '$http', '$statePar
 
 		if($scope.note.add.error.length < 1){
 
-			$http.post('/api/addnote/' + $scope.carId, $scope.note.new)
-			.success(function(data){
+			$Data.save({data: 'note', action: 'add', id: $scope.carId}, $scope.note.new, function(data){
 
-				$http.get('/api/getnotes/' + $scope.carId)
-				.success(function(data) {
-
+				$Data.query({data: 'note', action: 'getmulti', id: $scope.carId}, function(data){
 					$scope.note.data = data;
 
-				})
-				.error(function(data, status) {
+					$scope.note.dataCopy = data.slice();
 
-					console.log('Could not retreive notes, error is: ' + data.message);
-
+					for (var i = 0; i < $scope.note.data.length; i++){ 
+						$scope.note.del.chkBox[i] = 'check-sel fa fa-close';
+					}
 				});
 
 				$modalInstance.close();
 
-			})
-			.error(function(data, status){
-
-				console.log('Could not add note: ' + data.message);
-
 			});
-			console.log('success');
 		}
 	};
 
@@ -44,18 +36,5 @@ angular.module('tsApp').controller('addNoteCtrl', ['$scope', '$http', '$statePar
 		$modalInstance.close();
 
 	};
-	/*
-	$scope.note.add.submit = function(){
-		$http.post('/api/addnote/' + $scope.carId, $scope.newNote)
-		.success(function(data){
-			$modalInstance.close();
-		})
-		.error(function(data, status){
-			console.log('Could not add note: ' + data.message);
-		});
-	};
 
-	$scope.note.add.cancel = function() {
-		$modalInstance.close();
-	};*/
 }]);

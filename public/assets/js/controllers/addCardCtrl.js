@@ -1,4 +1,4 @@
-angular.module('tsApp').controller('addCardCtrl', ['$scope', '$http', '$location', '$stateParams', '$modalInstance', function($scope, $http, $location, $stateParams, $modalInstance) {
+angular.module('tsApp').controller('addCardCtrl', ['$scope', '$Data', '$location', '$stateParams', '$modalInstance', function($scope, $Data, $location, $stateParams, $modalInstance) {
 	var carId = $stateParams.id;
 	$scope.show = [];
 	$scope.card = {};
@@ -21,11 +21,9 @@ angular.module('tsApp').controller('addCardCtrl', ['$scope', '$http', '$location
 
 		if($scope.error.length < 1){
 
-			$http.post('/api/addcard/' + $scope.carId, $scope.card.new)
-			.success(function(data) {
+			$Data.save({data: 'card', action: 'add', id: $scope.carId}, $scope.card.new, function() {
 
-				$http.get('/api/getcards/' + $scope.carId)
-				.success(function(data) {
+				$Data.query({data: 'card', action: 'getmulti', id: $scope.carId}, function(data) {
 
 					$scope.$parent.card.data = data;
 
@@ -35,20 +33,10 @@ angular.module('tsApp').controller('addCardCtrl', ['$scope', '$http', '$location
 						$scope.$parent.card.del.chkBox[i] = 'check-sel fa fa-square-o';
 					}
 
-				})
-				.error(function(data, status) {
-
-					console.log('Could not retreive cards, error is: ' + status);
-
 				});
 
 				$scope.error = [];
 				$modalInstance.close();
-
-			})
-			.error(function(data, error) {
-
-				console.log('error is: ' + error);
 
 			});
 
@@ -69,24 +57,6 @@ angular.module('tsApp').controller('addCardCtrl', ['$scope', '$http', '$location
 			$scope.show[ind] = !$scope.card.add.isExpand;
 		});
 		$scope.card.add.isExpand = !$scope.card.add.isExpand;
-	};
-
-	/*
-	$scope.submit = function() {
-		//console.log($scope.newCard.name + ', ' + $scope.newCard.track);
-		$http.post('/api/addcard/' + carId, $scope.newCard)
-		.success(function(data) {
-			$location.path('panel/car/' + carId);
-		})
-		.error(function(data, error) {
-			console.log('error is: ' + error);
-		});
-	};
-
-	$scope.cancel = function() {
-		$modalInstance.close();
-	}*/
-	
-	
+	};		
 
 }]);

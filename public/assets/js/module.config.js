@@ -1,4 +1,4 @@
-angular.module('tsApp', ['ui.router', 'ui.bootstrap', 'ngCookies', 'ngResource']);
+angular.module('tsApp', ['ui.router', 'ui.bootstrap', 'ngCookies', 'ngResource'])
 
 angular.module('tsApp').config(function($locationProvider){
   $locationProvider
@@ -6,11 +6,15 @@ angular.module('tsApp').config(function($locationProvider){
     enabled: true,
     //requireBase: false
   });
-});
+})
 
-angular.module('tsApp').factory('Auth', ['$cookies', '$http', '$location', function($cookies, $http, $location){
+.factory('$Data', ['$resource', function($resource){
+  return $resource('/api/:data/:action/:id');
+}])
 
-  var auth = {
+.factory('Auth', ['$cookies', '$http', '$location', function($cookies, $http, $location){
+
+  return {
 
     guestUrl: 'http://test.tracksetup.info:8080/',
 
@@ -31,16 +35,16 @@ angular.module('tsApp').factory('Auth', ['$cookies', '$http', '$location', funct
         console.log('Unauthorized!');
         event.preventDefault();
         $location.path('/');
-      } else if($cookies.auth && newUrl === auth.guestUrl){
+      } else if($cookies.auth && newUrl === this.guestUrl){
         event.preventDefault();
       }
     }
   };
-  return auth;
-}]);
+
+}])
 
 //Check for authorization on bootup
-angular.module('tsApp').run(['$rootScope', 'Auth', '$location', '$timeout', function($rootScope, Auth, $location, $timeout){
+.run(['$rootScope', 'Auth', '$location', '$timeout', function($rootScope, Auth, $location, $timeout){
     Auth.uri;  
     $rootScope.$on('$locationChangeStart', Auth.uriEventHandler);
 }]);
