@@ -1,0 +1,11 @@
+<div class="add cars">
+	<div class="form-container">
+		<h2>Delete Car</h2>
+		<div>
+			<div ng-repeat="car in cars">
+				<p>{{car.name}}<i ng-click="delCar($index)" class="fa fa-trash fa-lg"></i></p>
+			</div>
+			<button ng-click="cancel()">Done</button>
+		</div>
+	</div>
+</div>
