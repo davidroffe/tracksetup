@@ -31,6 +31,7 @@ router.post('/api/logout', auth.logout);
 router.post('/api/note/add/:carId', note.addNote);
 router.post('/api/card/del/:carId', card.delCards);
 router.post('/api/note/del/:carId', note.delNotes);
+router.delete('/api/car/del/:carId', car.delCar);
 
 
 //Static

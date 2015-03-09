@@ -12,11 +12,11 @@
 			</div>
 			<div>
 				<label ng-class="car.edit.error[0]">Name</label>
-				<input type="text" name="name" ng-model="car.edit.name">
+				<input type="text" name="name" ng-model="car.edit.data.name">
 			</div>
 			<div>
 				<label ng-class="car.edit.error[1]">Year</label>
-				<select name="year" ng-model="car.edit.year">
+				<select name="year" ng-model="car.edit.data.year">
 					<option value="2007">2007</option>
 					<option value="2006">2006</option>
 					<option value="2005">2005</option>
@@ -99,11 +99,11 @@
 			</div>
 			<div>
 				<label ng-class="car.edit.error[2]">Make</label>
-				<input type="text" name="make" ng-model="car.edit.make">
+				<input type="text" name="make" ng-model="car.edit.data.make">
 			</div>
 			<div>
 				<label ng-class="car.edit.error[3]">Model</label>
-				<input type="text" name="model" ng-model="car.edit.model">
+				<input type="text" name="model" ng-model="car.edit.data.model">
 			</div>
 			<button ng-click="car.edit.submit()">Submit</button>
 			<button class="cancel" ng-click="car.edit.cancel()">Cancel</button>

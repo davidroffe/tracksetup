@@ -1,4 +1,5 @@
 <h3 ng-click="edit()" class="card edit"><i class="fa fa-pencil fa-lg"></i>Edit</h3>
+<div class="bg">
 <div class="container">
 	<table class="card">
 		<thead>
@@ -19,106 +20,107 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-show="card.toe">
+			<tr ng-show="card.data.toe">
 				<td class="lft-al ctg-1"><i class="fa fa-chevron-circle-right"></i>Toe</td>
-				<td class="sec">{{card.toe.front}}</td>
-				<td>{{card.toe.rear}}</td>
+				<td class="sec">{{card.data.toe.front}}</td>
+				<td>{{card.data.toe.rear}}</td>
 			</tr>
-			<tr ng-show="card.camber">
+			<tr ng-show="card.data.camber">
 				<td class="lft-al ctg-1"><i class="fa fa-chevron-circle-right"></i>Camber</td>
-				<td class="sec">{{card.camber.frontLeft}} | {{card.camber.frontRight}}</td>
-				<td>{{card.camber.rearLeft}} | {{card.camber.rearRight}}</td>
+				<td class="sec">{{card.data.camber.frontLeft}} | {{card.data.camber.frontRight}}</td>
+				<td>{{card.data.camber.rearLeft}} | {{card.data.camber.rearRight}}</td>
 			</tr>
-			<tr ng-show="card.caster">
+			<tr ng-show="card.data.caster">
 				<td class="lft-al ctg-1"><i class="fa fa-chevron-circle-right"></i>Caster</td>
-				<td class="sec">{{card.caster.left}}</td>
-				<td>{{card.caster.right}}</td>
+				<td class="sec">{{card.data.caster.left}}</td>
+				<td>{{card.data.caster.right}}</td>
 			</tr>
-			<tr ng-show="card.spring">
+			<tr ng-show="card.data.spring">
 				<td class="lft-al ctg-1"><i class="fa fa-chevron-circle-down"></i>Springs</td>
 				<td class="sec"></td>
 				<td></td>
 			</tr>
-			<tr ng-show="card.spring.length">
+			<tr ng-show="card.data.spring.length">
 				<td class="lft-al ctg-2"><i class="fa fa-chevron-circle-right"></i>Length</td>
-				<td class="sec">{{card.spring.length.frontLeft}} | {{card.spring.length.frontRight}}</td>
-				<td>{{card.spring.length.rearLeft}} | {{card.spring.length.rearRight}}</td>
+				<td class="sec">{{card.data.spring.length.frontLeft}} | {{card.data.spring.length.frontRight}}</td>
+				<td>{{card.data.spring.length.rearLeft}} | {{card.data.spring.length.rearRight}}</td>
 			</tr>
-			<tr ng-show="card.spring.rate">
+			<tr ng-show="card.data.spring.rate">
 				<td class="lft-al ctg-2"><i class="fa fa-chevron-circle-right"></i>Rate</td>
-				<td class="sec">{{card.spring.rate.frontLeft}} | {{card.spring.rate.frontRight}}</td>
-				<td>{{card.spring.rate.rearLeft}} | {{card.spring.rate.rearRight}}</td>
+				<td class="sec">{{card.data.spring.rate.frontLeft}} | {{card.data.spring.rate.frontRight}}</td>
+				<td>{{card.data.spring.rate.rearLeft}} | {{card.data.spring.rate.rearRight}}</td>
 			</tr>
-			<tr ng-show="card.swaybar">
+			<tr ng-show="card.data.swaybar">
 				<td class="lft-al ctg-1"><i class="fa fa-chevron-circle-right"></i>Swaybars</td>
-				<td class="sec">{{card.swaybar.front}}</td>
-				<td>{{card.swaybar.rear}}</td>
+				<td class="sec">{{card.data.swaybar.front}}</td>
+				<td>{{card.data.swaybar.rear}}</td>
 			</tr>
-			<tr ng-show="card.shock">
+			<tr ng-show="card.data.shock">
 				<td class="lft-al ctg-1"><i class="fa fa-chevron-circle-down"></i>Shocks</td>
 				<td class="sec"></td>
 				<td></td>
 			</tr>
-			<tr ng-show="card.shock.oneWay">
+			<tr ng-show="card.data.shock.oneWay">
 				<td class="lft-al ctg-2"><i class="fa fa-chevron-circle-right"></i>Setting</td>
-				<td class="sec">{{card.shock.oneWay.frontLeft}} | {{card.shock.oneWay.frontRight}}</td>
-				<td>{{card.shock.oneWay.rearLeft}} | {{card.shock.oneWay.rearRight}}</td>
+				<td class="sec">{{card.data.shock.oneWay.frontLeft}} | {{card.data.shock.oneWay.frontRight}}</td>
+				<td>{{card.data.shock.oneWay.rearLeft}} | {{card.data.shock.oneWay.rearRight}}</td>
 			</tr>
-			<tr ng-show="card.shock.fourWay.compression">
+			<tr ng-show="card.data.shock.fourWay.compression">
 				<td class="lft-al ctg-2"><i class="fa fa-chevron-circle-down"></i>Compression</td>
 				<td class="sec"></td>
 				<td></td>
 			</tr>
-			<tr ng-show="card.shock.fourWay.compression.highSpeed">
+			<tr ng-show="card.data.shock.fourWay.compression.highSpeed">
 				<td class="lft-al ctg-3"><i class="fa fa-chevron-circle-right"></i>High Speed</td>
-				<td class="sec">{{card.shock.fourWay.compression.highSpeed.frontLeft}} | {{card.shock.fourWay.compression.highSpeed.frontRight}}</td>
-				<td>{{card.shock.fourWay.compression.highSpeed.rearLeft}} | {{card.shock.fourWay.compression.highSpeed.rearRight}}</td>
+				<td class="sec">{{card.data.shock.fourWay.compression.highSpeed.frontLeft}} | {{card.data.shock.fourWay.compression.highSpeed.frontRight}}</td>
+				<td>{{card.data.shock.fourWay.compression.highSpeed.rearLeft}} | {{card.data.shock.fourWay.compression.highSpeed.rearRight}}</td>
 			</tr>
-			<tr ng-show="card.shock.fourWay.compression.lowSpeed">
+			<tr ng-show="card.data.shock.fourWay.compression.lowSpeed">
 				<td class="lft-al ctg-3"><i class="fa fa-chevron-circle-right"></i>Low Speed</td>
-				<td class="sec">{{card.shock.fourWay.compression.lowSpeed.frontLeft}} | {{card.shock.fourWay.compression.lowSpeed.frontRight}}</td>
-				<td>{{card.shock.fourWay.compression.lowSpeed.rearLeft}} | {{card.shock.fourWay.compression.lowSpeed.rearRight}}</td>
+				<td class="sec">{{card.data.shock.fourWay.compression.lowSpeed.frontLeft}} | {{card.data.shock.fourWay.compression.lowSpeed.frontRight}}</td>
+				<td>{{card.data.shock.fourWay.compression.lowSpeed.rearLeft}} | {{card.data.shock.fourWay.compression.lowSpeed.rearRight}}</td>
 			</tr>
-			<tr ng-show="card.shock.fourWay.rebound">
+			<tr ng-show="card.data.shock.fourWay.rebound">
 				<td class="lft-al ctg-2"><i class="fa fa-chevron-circle-down"></i>Rebound</td>
 				<td class="sec"></td>
 				<td></td>
 			</tr>
-			<tr ng-show="card.shock.fourWay.rebound.highSpeed">
+			<tr ng-show="card.data.shock.fourWay.rebound.highSpeed">
 				<td class="lft-al ctg-3"><i class="fa fa-chevron-circle-right"></i>High Speed</td>
-				<td class="sec">{{card.shock.fourWay.rebound.highSpeed.frontLeft}} | {{card.shock.fourWay.rebound.highSpeed.frontRight}}</td>
-				<td>{{card.shock.fourWay.rebound.highSpeed.rearLeft}} | {{card.shock.fourWay.rebound.highSpeed.rearRight}}</td>
+				<td class="sec">{{card.data.shock.fourWay.rebound.highSpeed.frontLeft}} | {{card.data.shock.fourWay.rebound.highSpeed.frontRight}}</td>
+				<td>{{card.data.shock.fourWay.rebound.highSpeed.rearLeft}} | {{card.data.shock.fourWay.rebound.highSpeed.rearRight}}</td>
 			</tr>
-			<tr ng-show="card.shock.fourWay.rebound.lowSpeed">
+			<tr ng-show="card.data.shock.fourWay.rebound.lowSpeed">
 				<td class="lft-al ctg-3"><i class="fa fa-chevron-circle-right"></i>Low Speed</td>
-				<td class="sec">{{card.shock.fourWay.rebound.lowSpeed.frontLeft}} | {{card.shock.fourWay.rebound.lowSpeed.frontRight}}</td>
-				<td>{{card.shock.fourWay.rebound.lowSpeed.rearLeft}} | {{card.shock.fourWay.rebound.lowSpeed.rearRight}}</td>
+				<td class="sec">{{card.data.shock.fourWay.rebound.lowSpeed.frontLeft}} | {{card.data.shock.fourWay.rebound.lowSpeed.frontRight}}</td>
+				<td>{{card.data.shock.fourWay.rebound.lowSpeed.rearLeft}} | {{card.data.shock.fourWay.rebound.lowSpeed.rearRight}}</td>
 			</tr>
-			<tr ng-show="card.cornerWeight">
+			<tr ng-show="card.data.cornerWeight">
 				<td class="lft-al ctg-1"><i class="fa fa-chevron-circle-right"></i>Corner Weights</td>
-				<td class="sec">{{card.cornerWeight.frontLeft}} | {{card.cornerWeight.frontRight}}</td>
-				<td>{{card.cornerWeight.rearLeft}} | {{card.cornerWeight.rearLeft}}</td>
+				<td class="sec">{{card.data.cornerWeight.frontLeft}} | {{card.data.cornerWeight.frontRight}}</td>
+				<td>{{card.data.cornerWeight.rearLeft}} | {{card.data.cornerWeight.rearLeft}}</td>
 			</tr>
-			<tr ng-show="card.cornerWeight">
+			<tr ng-show="card.data.cornerWeight">
 				<td class="lft-al ctg-1"><i class="fa fa-chevron-circle-right"></i>Sway Bars</td>
-				<td class="sec">{{card.swayBar.front}}</td>
-				<td>{{card.swayBar.rear}}</td>
+				<td class="sec">{{card.data.swayBar.front}}</td>
+				<td>{{card.data.swayBar.rear}}</td>
 			</tr>
-			<tr ng-show="card.tire">
+			<tr ng-show="card.data.tire">
 				<td class="lft-al ctg-1"><i class="fa fa-chevron-circle-down"></i>Tires</td>
 				<td class="sec"></td>
 				<td></td>
 			</tr>
-			<tr ng-show="card.tire.coldPressure">
+			<tr ng-show="card.data.tire.coldPressure">
 				<td class="lft-al ctg-2"><i class="fa fa-chevron-circle-right"></i>Cold Pressures</td>
-				<td class="sec">{{card.tire.coldPressure.frontLeft}} | {{card.tire.coldPressure.frontRight}}</td>
-				<td>{{card.tire.coldPressure.rearLeft}} | {{card.tire.coldPressure.rearRight}}</td>
+				<td class="sec">{{card.data.tire.coldPressure.frontLeft}} | {{card.data.tire.coldPressure.frontRight}}</td>
+				<td>{{card.data.tire.coldPressure.rearLeft}} | {{card.data.tire.coldPressure.rearRight}}</td>
 			</tr>
-			<tr ng-show="card.tire.hotPressure">
+			<tr ng-show="card.data.tire.hotPressure">
 				<td class="lft-al ctg-2"><i class="fa fa-chevron-circle-right"></i>Hot Pressures</td>
-				<td class="sec">{{card.tire.hotPressure.frontLeft}} | {{card.tire.hotPressure.frontRight}}</td>
-				<td>{{card.tire.hotPressure.rearLeft}} | {{card.tire.hotPressure.rearRight}}</td>
+				<td class="sec">{{card.data.tire.hotPressure.frontLeft}} | {{card.data.tire.hotPressure.frontRight}}</td>
+				<td>{{card.data.tire.hotPressure.rearLeft}} | {{card.data.tire.hotPressure.rearRight}}</td>
 			</tr>
 		</tbody>
 	</table>
+</div>
 </div>

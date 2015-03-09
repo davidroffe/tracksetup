@@ -59,7 +59,7 @@ module.exports = {
 			if(car){
 				for(var i = 0; i < notesToDel.length; i++) {
 					car.cards.splice(car.notes.indexOf(notesToDel[i]), 1);
-				};
+				}
 
 				car.save();
 			}

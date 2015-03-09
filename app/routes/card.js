@@ -52,34 +52,6 @@ module.exports = {
 				var newCard = new Card(card);
 				newCard.car = carId;
 				newCard.date = dateString;
-
-				/*for(a in card){
-					if(typeof card[a] === 'object'){
-						for(b in card[a]){
-							if(typeof card[a][b] === 'object'){
-								for(c in card[a][b]){
-									if(typeof card[a][b][c] === 'object'){
-										for(d in card[a][b][c]){
-											if(typeof card[a][b][c][d] === 'object'){
-												for(e in card[a][b][c][d]){
-													newCard[a][b][c][d][e] = card[a][b][c][d][e];
-												}
-											} else {
-												newCard[a][b][c][d] = card[a][b][c][d];
-											}
-										}
-									} else {
-										newCard[a][b][c] = card[a][c][c];
-									}
-								}
-							} else {
-								newCard[a][b] = card[a][b];
-							}
-						}
-					} else {
-						newCard[a] = card[a];
-					}
-				}*/
 				
 				newCard.save();
 				
@@ -120,11 +92,9 @@ module.exports = {
 
 		Card.findOne({_id:cardId}, function(err, card){
 			if(card){
-				card.update(newData, function(err, numbAffected, raw){
-					console.log('Number affected is: ' + numbAffected);
-				});
+				card.update(newData, function(err, numbAffected, raw){});
 			}
-			res.status(200).end();
+			res.json(card);
 		});
 	}
 };

@@ -1,13 +1,5 @@
 angular.module('tsApp', ['ui.router', 'ui.bootstrap', 'ngCookies', 'ngResource'])
 
-angular.module('tsApp').config(function($locationProvider){
-  $locationProvider
-  .html5Mode({
-    enabled: true,
-    //requireBase: false
-  });
-})
-
 .factory('$Data', ['$resource', function($resource){
   return $resource('/api/:data/:action/:id');
 }])
@@ -30,9 +22,7 @@ angular.module('tsApp').config(function($locationProvider){
       } 
     },
     uriEventHandler: function(event, newUrl, oldUrl){
-      console.log(newUrl + '\n' + oldUrl);
-      if(!$cookies.auth && newUrl.indexOf(auth.guestUrl + 'panel') === 0 ){
-        console.log('Unauthorized!');
+      if(!$cookies.hasOwnProperty('auth') && newUrl.indexOf(this.guestUrl + 'panel') === 0 ){
         event.preventDefault();
         $location.path('/');
       } else if($cookies.auth && newUrl === this.guestUrl){
@@ -43,13 +33,15 @@ angular.module('tsApp').config(function($locationProvider){
 
 }])
 
-//Check for authorization on bootup
-.run(['$rootScope', 'Auth', '$location', '$timeout', function($rootScope, Auth, $location, $timeout){
-    Auth.uri;  
-    $rootScope.$on('$locationChangeStart', Auth.uriEventHandler);
-}]);
+.config(function($locationProvider){
+  $locationProvider
+  .html5Mode({
+    enabled: true,
+    //requireBase: false
+  });
+})
 
-angular.module('tsApp').config(function($stateProvider, $urlRouterProvider){
+.config(function($stateProvider, $urlRouterProvider){
   $stateProvider
   .state('index', {
     url:'/',
@@ -89,9 +81,21 @@ angular.module('tsApp').config(function($stateProvider, $urlRouterProvider){
     url:'/addcard/:id',
     controller: 'addCardCtrl',
     templateUrl: 'views/addCardView.html'
+  })
+	.state('panel.settings', {
+    url:'/settings',
+    controller: 'settingsCtrl',
+    templateUrl: 'views/settingsView.html'
   });
 
   $urlRouterProvider
   .otherwise('/404');
 
-});
+})
+
+//Check for authorization on bootup
+.run(['$rootScope', 'Auth', '$location', '$timeout', function($rootScope, Auth, $location, $timeout){
+    Auth.uri;  
+    $rootScope.$on('$locationChangeStart', Auth.uriEventHandler);
+}]);
+

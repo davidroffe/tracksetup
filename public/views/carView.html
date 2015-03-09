@@ -1,9 +1,11 @@
-<div class="container">
-	<div id="car-title">
+<div class="car title">
+	<div>
 		<img ng-src="{{car.data.avatar}}">
-		<h1>{{car.data.name}}</h1>
 		<i ng-click="car.edit.open()" class="fa fa-pencil fa-2x"></i>
 	</div>
+	<h1>{{car.data.name}}</h1>
+</div>
+<div class="container cards notes">
 	<div id="car-cards">
 		<div id="cards-title">	
 			<div id="del-card">

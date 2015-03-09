@@ -1,8 +1,20 @@
 <div id="cars-view">
 	<ul>
 		<li ng-repeat="car in cars">
-			<a class="indi-card live-card def-car" ng-href="panel/car/{{car._id}}"><img ng-src="{{car.avatar}}"><p>{{car.name}}</p></a>
+			<a class="indi-card live-card def-car" ng-href="panel/car/{{car._id}}">
+				<img ng-src="{{car.avatar}}">
+				<p>{{car.name}}</p>
+			</a>
 		</li>
-	  	<li class="create-card"><a class="indi-card create-card" ng-click="addCarOpen()"><i class="fa fa-plus"></i>Add a car...</a></li>
+	  	<li class="modify-card">
+			<div class="split-card create-card" ng-click="addCarOpen()">
+				<i class="fa fa-plus"></i>
+				<span>Add a car...</span>
+			</div>
+			<div class="split-card delete-card" ng-click="delCarOpen()">
+				<i class="fa fa-minus"></i>
+				<span>Delete a car...</span>
+			</div>
+		</li>
 	</ul>
 </div>

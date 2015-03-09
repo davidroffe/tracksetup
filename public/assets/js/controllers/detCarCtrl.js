@@ -1,4 +1,4 @@
-angular.module('tsApp').controller('detCarCtrl', ['$scope', '$stateParams', '$modal', '$Data', function($scope, $stateParams, $modal, $Data){
+angular.module('tsApp').controller('detCarCtrl', ['$scope', '$stateParams', '$modal', '$http', '$Data', function($scope, $stateParams, $modal, $http, $Data){
 	//Car
 	$scope.carId = $stateParams.id;
 	$scope.car = {};
@@ -266,33 +266,4 @@ angular.module('tsApp').controller('detCarCtrl', ['$scope', '$stateParams', '$mo
 		});
 
 	};
-
-
-	$scope.$watch(function(){return $scope.car.edit.image;}, function(e){
-
-		if ($scope.car.edit.image) {
-
-			var formData = new FormData();
-
-			formData.append('image', $scope.car.edit.image[0]);
-
-			$http.post('/api/uploadcar/' + $scope.carId, formData, 
-			{
-				headers: {'Content-Type': undefined},
-				transformRequest: angular.identity
-			})
-			.success(function(data){
-
-				$Data.get({data: 'car', action: 'getsingle', id: $scope.carId}, function(data){
-					$scope.car.data = data;
-				});
-
-			})
-			.error(function(err){
-
-			});
-		}
-	});
-
-
 }]);

@@ -47,8 +47,6 @@ footer, header, hgroup, menu, nav, section {
   background: rgba(0,0,0,0.4);
 }
 
-
-
 .modal-dialog {
     margin: 100px auto 0;
 }
@@ -56,23 +54,28 @@ footer, header, hgroup, menu, nav, section {
 html{
   height: 100%;
 }
+
 body {
   height: 100%;
 	line-height: 1;
 	font-family: 'Raleway', sans-serif;
-	background-color: #F4F4F4;
+	background-color: #FFF;
 }
+
 ol, ul {
 	list-style: none;
 }
+
 blockquote, q {
 	quotes: none;
 }
+
 blockquote:before, blockquote:after,
 q:before, q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -160,11 +163,6 @@ table {
 }
 
 #centerbox ::-webkit-input-placeholder {
-color: #FFFFFF;
-opacity:1;
-}
-
-#centerbox ::-moz-placeholder { /* Firefox 18- */
 color: #FFFFFF;
 opacity:1;
 }
@@ -338,28 +336,12 @@ body.retract > #left-nav i.fa {
 }*/
 
 #top-nav {
-  background-color: rgba(255,255,255,0.75);
-  padding: 0px 30px;
-  overflow: hidden;
-  border-bottom: 2px solid #e5e5e5;
+	position: relative;
+	z-index: 1;
+  background-color: #fff;
+  padding: 0 30px;
+	height: 93px;
 }
-
-/*body.retract > #top-nav {
-  margin-left: 60px;
-}
-
-#top-nav-left > #menu-toggle {
-  color: #b3b3b3;
-}
-
-#top-nav-left > #menu-toggle:visited {
-  color: #b3b3b3;
-}
-
-#top-nav-left > #menu-toggle {
-  margin: 0 20px;
-}
-*/
 
 #top-nav-left {
   float: left;
@@ -389,12 +371,10 @@ body.retract > #left-nav i.fa {
 #top-user-menu {
   display: none;
   position: absolute;
-  border: 1px solid #cfcfcf;
+  top: 80px;
+  right: 0;
   background: #fff;
-  border-radius: 6px;
-  padding: 5px 20px;
-  margin: 5px 0 0 -160px;
-  box-shadow: 0 1px 6px rgba(0,0,0,.15);
+  padding: 5px 80px 5px 20px;
 }
 
 #top-user-menu > li {
@@ -407,38 +387,38 @@ body.retract > #left-nav i.fa {
 }
 
 #content {
-  padding: 30px;
+
 }
 
 #background {
   position: absolute;
-  top: 0;
+  top: 444px;
   left: 0;
   min-height: 440px;
-  height: 100%;
+  height: 50%;
   width: 100%;
-  background: url(/assets/img/panel_bg.jpg);
-  z-index: -1;
-  opacity: .15;
+  background: #fff;
   background-size: cover;
 }
 
-/*body.retract > #content {
-  margin-left: 60px;
-}*/
-
 #cars-view {
-  padding: 16px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #F4F4F4;
+}
+
+#cars-view > ul{
+	margin: 113px 20px 0;
 }
 
 #cars-view li {
   display: inline-block;
-  overflow: hidden;
-  margin: 20px;
-}
-
-#cars-view .create-card:hover {
-	box-shadow: 0 1px 6px rgba(0,0,0,0.15);
+  vertical-align: top;
+  margin-right: 20px;
+  margin-bottom: 20px;
 }
 
 .indi-card {
@@ -449,16 +429,30 @@ body.retract > #left-nav i.fa {
   overflow: hidden;
 }
 
-.create-card {
-  line-height: 35px;
-  text-align: center;
-  font-size: 25px;
+.modify-card {
+	padding: 30px 0;
 }
 
-.create-card > i {
-  display: block;
-  margin: 35px 0 18px;
-  font-size: 90px;
+.split-card {
+	cursor: pointer;
+	display: block;
+	width: 250px;
+	padding: 15px 0;
+	font-size: 30px;
+	color: #FFF;
+	background: rgba(255, 255, 255, 0.8);
+}
+
+.split-card > i {
+	margin-left: 15px;
+}
+
+.create-card {
+	background: #FF8241;
+}
+
+.delete-card {
+	background: #FFCB00;
 }
 
 .live-card > img {
@@ -481,58 +475,71 @@ body.retract > #left-nav i.fa {
   background: #FF8241;
 }
 
+
+
 /*Card Select View*/
 .container {
   width: 1230px;
   margin: 0 auto;
 }
 
-#car-title {
-  margin: 6px auto 36px;
-  width: 200px;
+.car.title {
+  padding: 36px 0;
+  background-color: #f4f4f4;
 }
 
-#car-title > img {
-  display: block;
-  width: 200px;
+.car.title > div {
+	margin :0 auto;
+	width: 160px;
+}
+
+.car.title > div > img {
+  width: 160px;
   margin: 0 auto;
   border-radius: 50%;
 }
 
-#car-title > h1 {
-  display: inline-block;
-  margin-left: 37px;
-  color: #9d9d9d;
+.car.title > h1 {
+  margin: auto;
+  color: #767676;
   font-size: 30px;
-  font-weight: 600;
   text-align: center;
   padding: 15px 0;
-  width: 126px;
 }
 
-#car-title > i {
+.car.title > div > i {
   opacity: 0;
-  color: #9d9d9d;
-  vertical-align: 2px;
+  color: #767676;
+  vertical-align: top;
+	float: right;
+	margin-top: -160px;
+	margin-right: -25px;
   cursor: pointer;
   transition: opacity 0.3s ease, color, 0.3s ease;
 }
 
-#car-title > i:hover {
+.car.title > div > i:hover {
   color:#000;
 }
 
-#car-title:hover > i {
+.car.title > div:hover > i {
   opacity: 1;
 }
 
+div.cards.notes.container {
+	background: #FFF;
+}
+
 #car-cards {
+	margin-top: -20px;
+	margin-bottom: 20px;
 	padding: 15px;
 	background: #FFF;
 	display: inline-block;
 	width: 800px;
 	border-radius: 2px;
-  float: left;
+	float: left;
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04), -6px 8px 15px rgba(0, 0, 0, 0.04), 6px 8px 15px rgba(0, 0, 0, 0.04);
 }
 
 #cards-title {
@@ -548,7 +555,7 @@ body.retract > #left-nav i.fa {
   display: inline-block;
 	margin-left: 275px;
 	font-size: 30px;
-	color: #A8A8A8;
+	color: #767676;
 }
 
 #del-card, #del-note {
@@ -686,13 +693,16 @@ body.retract > #left-nav i.fa {
 }
 
 #car-notes {
-	display: block;
+  margin-top: -20px;
+  margin-bottom: 20px;
+  display: block;
   padding: 15px;
-	width: 300px;
+  width: 300px;
   background: #FFF;
   float: left;
   margin-left: 50px;
   border-radius: 2px;
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04), -6px 8px 15px rgba(0, 0, 0, 0.04), 6px 8px 15px rgba(0, 0, 0, 0.04);
 }
 
 #notes-title {
@@ -705,7 +715,7 @@ body.retract > #left-nav i.fa {
   margin-left: 22px;
   text-align: center;
   font-size: 30px;
-  color: #A8A8A8;
+  color: #767676;
 }
 
 #add-note {
@@ -812,8 +822,18 @@ p.col-3 {
 }
 
 /*Individual Card View*/
+.bg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #F4F4F4;
+}
+
 .card.edit {
   position: fixed;
+	z-index: 1;
   cursor: pointer;
   right: -40px;
   top: 200px;
@@ -831,11 +851,15 @@ p.col-3 {
 }
 
 .card.edit > i {
-  margin: 0px 10px 0 7px;
+  margin: 0 10px 0 7px;
+}
+
+.bg > .container {
+	margin-top: 93px;
 }
 
 table.card {
-  margin: auto;
+  margin: 35px auto;
 }
 
 th, td {
@@ -892,11 +916,6 @@ padding-top: 3px;
 font-size: 14px;
 }
 
-.add ::-moz-placeholder { /* Firefox 18- */
-padding-top: 3px;
-font-size: 14px;
-}
-
 .add ::-moz-placeholder { /* Firefox 19+ */
 padding-top: 3px;
 font-size: 14px;
@@ -927,7 +946,15 @@ font-size: 14px;
   overflow: hidden;
 }
 
-.add label {
+.add .form-container {
+  overflow: hidden;
+}
+
+.add .form-container div{
+	padding: 10px 0;
+}
+
+.add label, #settings label {
   display: block;
   margin: 18px 0 6px;
   font-size: 20px;
@@ -935,17 +962,36 @@ font-size: 14px;
   color: #666;
 }
 
-.add input[type="text"], .add textarea {
+.add p {
+  display: block;
+  font-size: 20px;
+  font-weight: 600;
+  color: #666;
+}
+
+.add p > i {
+	color: #CCC;
+	float: right;
+}
+
+.add p > i:hover {
+	color: #666;
+	cursor: pointer;
+}
+
+.add.cars .form-container > div > div:hover {
+	background: #F7F7F7;
+}
+
+.add input[type="text"], .add textarea,
+#settings input[type="text"],
+#settings input[type="password"] {
   padding: 10px 0 10px 10px;
   margin-left: 1px;
   border: 1px solid #E5E5E5;
   border-radius: 5px;
   color: #808080;
-}
-
-.add input[type="text"]:focus,
-.add textarea:focus {
-  outline-color: #E96333;
+	outline-color: #E96333;
 }
 
 button {
@@ -1087,4 +1133,177 @@ p.add.cards.expand {
   font-size: 20px;
   color: #666;
   background-color: #FFF;
+}
+
+/*Settings View*/
+.title {
+	min-width:1260px;
+}
+
+.settings.title {
+  padding: 36px 0;
+  background-color: #f4f4f4;
+}
+
+.settings.title > h1 {
+	text-align: center;
+	font-size: 50px;
+}
+
+.settings.title > h1 > i {
+	margin-right: 10px;
+}
+
+#settings {
+	width: 440px;
+	margin: -20px auto 20px;
+	padding: 15px;
+	border-radius:2px;
+	background: #FFF;
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04), -6px 8px 15px rgba(0, 0, 0, 0.04), 6px 8px 15px rgba(0, 0, 0, 0.04);
+	overflow: hidden;
+}
+
+#settings > div {
+	overflow: hidden;
+}
+
+#settings input[type="text"], 
+#settings input[type="password"] {
+  width: 425px;
+}
+
+#settings p.delete {
+	color: red;
+	margin-top: 15px;
+	font-weight: 600;
+}
+
+div.delete p {
+	margin-top: 15px;
+	color: red;
+	font-weight: 600;
+}
+
+#settings label.delete {
+	display: inline-block;
+	font-weight: 500;
+	font-size: 16px;
+	margin-left: 5px;
+	margin-right: 100px;
+}
+
+div.delete > button.button {
+	background: red;
+}
+
+@media(max-width: 500px){
+	/*Login screen*/
+	#home {
+		width: 100%;
+		height: 100%;
+		min-width: 0;
+		min-height: 0;
+	}
+	
+	#home-center {
+		margin-top: 100px;
+		width: 100%;
+	}
+	
+	#home-center > h1 {
+		font-size: 40px;
+		padding: 10px 0;
+	}
+	
+	#center-box {
+		width: 100%;
+	}
+	
+	#center-box > form {
+		width: 100%;
+	}
+	
+	#center-box button, #center-box input[type="submit"] {
+		padding: 0;
+		width: 80%;
+	}
+	
+	#center-box input[type="text"], #center-box input[type="password"] {
+		width: 80%;
+	}
+	
+	/*Car List View*/
+	#cars-view li {
+		display: block;
+		width: 250px;
+		margin: 0 auto;
+	}
+	
+	/*Detailed Car View*/
+	.title {
+		width: 100%;
+		min-width: 0;
+	}
+	
+	.container {
+		width: 100%;
+		padding: 0;
+		min-width: 0;
+	}
+	
+	#car-cards {
+		width: 85%;
+		margin: -20px auto 0;
+		display: block;
+		float: none;
+	}
+	
+	#car-notes {
+		display: block;
+		float: none;
+		margin: 20px auto;
+		width: 85%;
+		box-shadow: 0 -15px 20px rgba(0, 0, 0, 0.04), 0 6px 20px rgba(0, 0, 0, 0.04), -6px 8px 15px rgba(0, 0, 0, 0.04), 6px 8px 15px rgba(0, 0, 0, 0.04);
+	}
+	
+	#cards-title h1 {
+		margin-left: 25px;
+	}
+	
+	p.col-2, p.col-3 {
+		display: none;
+	}
+	
+	.del p.col-1, .note-sel.del {
+		width: 190px;
+	}
+	
+	/*Modals*/
+	.modal-dialog {
+		margin: 0;
+	}
+	
+	.add.cards > .form-container, .add.cars > .form-container, .add.notes > .form-container {
+		width: 85%;
+	}
+	
+	.add.notes input[type="text"] {
+		width: 95%;
+	}
+	
+	.add textarea {
+		width: 95%;
+		height: 200px;
+		max-width: 95%;
+		max-height: 200px;
+	}
+	
+	button {
+		width: 95px;
+	}
+	
+	button.cancel {
+		float: left;
+	}
 }

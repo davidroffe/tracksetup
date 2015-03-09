@@ -1,6 +1,7 @@
 var User = require('../models/user.js');
 var Car  = require('../models/car.js');
 var Card = require('../models/card.js');
+var Note = require('../models/note.js');
 var fs   = require('fs');
 var gm   = require('gm');
 
@@ -151,6 +152,25 @@ module.exports = {
 
 		query.exec();
 
+		res.status(200).end();
+	},
+	delCar: function(req, res){
+		var carId = req.param('carId');
+		
+		Car.remove({_id:carId}, function(err){
+			if(err){
+				console.log(err);
+			}
+		});
+		
+		Card.remove({car:carId}, function(err){
+			console.log(err);
+		});
+		
+		Note.remove({car:carId}, function(err){
+			console.log(err);
+		});
+		
 		res.status(200).end();
 	}
 };
