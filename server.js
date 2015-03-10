@@ -1,16 +1,17 @@
-var express = require('express');
-var app = express();
-var logger = require('morgan');
-var bodyParser = require('body-parser');
+var express      = require('express');
+var https        = require('https');
+var app          = express();
+var logger       = require('morgan');
+var bodyParser   = require('body-parser');
 var cookieParser = require('cookie-parser');
-var mongoose = require('mongoose');
-var port = process.env.PORT || 8080;
-var configDB = require('./config/db.js');
-var busboy = require('connect-busboy');
+var mongoose     = require('mongoose');
+var port         = process.env.PORT || 8080;
+var configDB     = require('./config/db.js');
+var httpsOptions = require('./config/https.js');
+var busboy       = require('connect-busboy');
 
 mongoose.connect(configDB.url);
 
-//app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
 	extended: false
 }));
@@ -33,13 +34,8 @@ app.all("/*", function(req, res, next) {
 	}
 });
 
-//app.use('/panel/*', function(req, res, next){
-//	console.log(req.url);
-//	next();
-//});
-
 app.use('/', require('./app/routes'));
 
-app.listen(port);
+https.createServer(httpsOptions, app).listen(port);
 
 console.log('Magic happens on ' + port);

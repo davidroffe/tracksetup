@@ -22,7 +22,9 @@ angular.module('tsApp', ['ui.router', 'ui.bootstrap', 'ngCookies', 'ngResource']
       } 
     },
     uriEventHandler: function(event, newUrl, oldUrl){
-      if(!$cookies.hasOwnProperty('auth') && newUrl.indexOf(this.guestUrl + 'panel') === 0 ){
+			
+      if(!($cookies.hasOwnProperty('auth')) && newUrl.indexOf(this.guestUrl + 'panel') === 0 ){
+				console.log('Unauthorized!');
         event.preventDefault();
         $location.path('/');
       } else if($cookies.auth && newUrl === this.guestUrl){
@@ -95,7 +97,7 @@ angular.module('tsApp', ['ui.router', 'ui.bootstrap', 'ngCookies', 'ngResource']
 
 //Check for authorization on bootup
 .run(['$rootScope', 'Auth', '$location', '$timeout', function($rootScope, Auth, $location, $timeout){
-    Auth.uri;  
-    $rootScope.$on('$locationChangeStart', Auth.uriEventHandler);
+    Auth.uri();  
+    $rootScope.$on('$locationChangeStart', Auth.uriEventHandler.bind(Auth));
 }]);
 
