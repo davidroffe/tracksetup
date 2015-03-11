@@ -6,7 +6,7 @@ angular.module('tsApp').controller('delCarCtrl', ['$scope', '$Data', '$location'
 			
 			$Data.delete({data: 'car', action: 'del', id: $scope.cars[ind]._id}, function() {
 				
-				$scope.cars = $Data.query({data: 'car', action: 'getmulti'});
+				$scope.$parent.cars = $Data.query({data: 'car', action: 'getmulti'});
 
 			});
 			

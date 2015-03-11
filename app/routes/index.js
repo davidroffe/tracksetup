@@ -16,12 +16,14 @@ router.post('/api/signup', auth.signUp);
 router.all("/*", auth.validateAuth);
 
 //API
-router.get('/api/user', user.userObject);
+router.get('/api/user/getsingle', user.userObject);
 router.get('/api/car/getsingle/:carId', car.getCar);
 router.get('/api/car/getmulti', car.getCars);
 router.get('/api/card/getsingle/:cardId', card.getCard);
 router.get('/api/card/getmulti/:carId', card.getCards);
 router.get('/api/note/getmulti/:carId', note.getNotes);
+router.post('/api/user/updateemail', user.updateEmail);
+router.post('/api/user/updatepass', user.updatePass);
 router.post('/api/car/upload/:carId', car.upload);
 router.post('/api/car/add', car.addCar);
 router.post('/api/car/edit/:carId', car.editCar);
@@ -32,6 +34,7 @@ router.post('/api/note/add/:carId', note.addNote);
 router.post('/api/card/del/:carId', card.delCards);
 router.post('/api/note/del/:carId', note.delNotes);
 router.delete('/api/car/del/:carId', car.delCar);
+router.delete('/api/user/del', user.deleteAccount);
 
 
 //Static

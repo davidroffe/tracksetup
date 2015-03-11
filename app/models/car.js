@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
 var carSchema = mongoose.Schema({
+	user  : [mongoose.Schema.Types.ObjectId],
 	avatar: String,
 	name  : String,
 	year  : Number,

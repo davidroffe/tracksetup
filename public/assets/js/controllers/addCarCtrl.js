@@ -14,16 +14,11 @@ angular.module('tsApp').controller('addCarCtrl', ['$scope', '$Data', '$location'
 
 		if($scope.error.length < 1){
 
-			console.log($scope.newCar.name + ', ' + $scope.newCar.year + ', ' + $scope.newCar.make + ', ' + $scope.newCar.model);
-			$Data.save({data: 'car', action: 'add'}, {
-				avatar: '/assets/img/car/default/def.png',
-				name: $scope.newCar.name,
-				year: $scope.newCar.year,
-				make: $scope.newCar.make,
-				model: $scope.newCar.model
-			}, function() {
+			$scope.newCar.avatar = '/assets/img/car/default/def.png';
+			
+			$Data.save({data: 'car', action: 'add'}, $scope.newCar, function() {
 				
-				$scope.cars = $Data.query({data: 'car', action: 'getmulti'});
+				$scope.$parent.cars = $Data.query({data: 'car', action: 'getmulti'});
 
 				$modalInstance.close();
 			});

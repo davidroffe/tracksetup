@@ -30,7 +30,7 @@ angular.module('tsApp').controller('guestCtrl', ['$scope', '$http', '$location',
 				password: $scope.login.password
 			})
 			.success(function(data, status){
-				$timeout(function(){$location.path('/panel/cars')}, 100);
+				$timeout(function(){$location.path('/panel/cars');}, 100);
 				console.log('URI changed');
 			})
 			.error(function(data, status){

@@ -969,12 +969,12 @@ font-size: 14px;
   color: #666;
 }
 
-.add p > i {
+.add.cars p > i {
 	color: #CCC;
 	float: right;
 }
 
-.add p > i:hover {
+.add.cars p > i:hover {
 	color: #666;
 	cursor: pointer;
 }
@@ -1173,6 +1173,18 @@ p.add.cards.expand {
   width: 425px;
 }
 
+.settings-message {
+	float: left;
+	color: #FF8241;
+	opacity: 0;
+	margin-top: 30px;
+	transition: opacity 0.3s ease;
+}
+
+.settings-message.show {
+	opacity: 1;
+}
+
 #settings p.delete {
 	color: red;
 	margin-top: 15px;
@@ -1195,6 +1207,10 @@ div.delete p {
 
 div.delete > button.button {
 	background: red;
+}
+
+#settings .delete.error {
+	font-weight: 800;
 }
 
 @media(max-width: 500px){
