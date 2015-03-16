@@ -34,7 +34,6 @@ angular.module('tsApp').controller('addNoteCtrl', ['$scope', '$Data', '$statePar
 	$scope.note.add.cancel = function() {
 		console.log($scope.test);
 		$modalInstance.close();
-
 	};
 
 }]);

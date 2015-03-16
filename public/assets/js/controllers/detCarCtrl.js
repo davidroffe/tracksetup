@@ -3,8 +3,6 @@ angular.module('tsApp').controller('detCarCtrl', ['$scope', '$stateParams', '$mo
 	$scope.carId = $stateParams.id;
 	$scope.car = {};
 	$scope.car.edit = {};
-
-
 	$scope.car.data = $Data.get({data: 'car', action:'getsingle', id:$scope.carId});
 
 
@@ -16,10 +14,10 @@ angular.module('tsApp').controller('detCarCtrl', ['$scope', '$stateParams', '$mo
 	$scope.card.del.toDel = [];
 	$scope.card.del.delButton = 'Delete';
 	$scope.card.del.isOpen = false;
-	$scope.cardClass = 'card-sel';
 	$scope.card.del.keepOpen = '';
 	$scope.card.del.canOrUndoLabel = 'Cancel';
 	$scope.card.del.canOrUndoIcon = 'fa fa-lg fa-arrow-circle-o-left';
+	$scope.cardClass = 'card-sel';
 
 
 	$Data.query({data: 'card', action: 'getmulti', id: $scope.carId}, function(data){
@@ -132,12 +130,10 @@ angular.module('tsApp').controller('detCarCtrl', ['$scope', '$stateParams', '$mo
 
 			});
 		}
-		
 	};
 
 
 	//Note delete methods
-
 	$scope.note.del.open = function () {
 		
 		if(!$scope.note.del.isOpen){

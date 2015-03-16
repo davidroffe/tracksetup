@@ -1,7 +1,7 @@
 angular.module('tsApp').controller('editCarCtrl', ['$scope', '$http', '$Data', '$location','$modalInstance', '$stateParams', function($scope, $http, $Data, $location, $modalInstance, $stateParams) {
 	var carId = $stateParams.id;
+	//copy initial data to compare against later
 	$scope.car.edit.data = copyObj($scope.car.data);
-
 
 
 	$scope.$watch(function(){return $scope.car.edit.image;}, function(e){

@@ -7,9 +7,12 @@ angular.module('tsApp').controller('addCardCtrl', ['$scope', '$Data', '$location
 	$scope.card.add.expandToggleLabel = 'Expand All';
 	$scope.card.add.isExpand = false;
 
+	//collapse form initially
 	for(var i=0;i<14;i++){
 		$scope.show[i] = false;
 	}
+
+	
 	$scope.card.add.submit = function() {
 
 		$scope.error = [];

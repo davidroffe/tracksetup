@@ -5,7 +5,7 @@ angular.module('tsApp').controller('guestCtrl', ['$scope', '$http', '$location',
 
 	$scope.show = true;
 
-	//switch between login or signup
+	//switch between login or signup view
 	$scope.showForm = function(){
 		$scope.show = !$scope.show;
 	};
@@ -57,7 +57,10 @@ angular.module('tsApp').controller('guestCtrl', ['$scope', '$http', '$location',
 
 				$scope.signUp.errorMessage.push('Passwords do not match.');
 
-		} 
+		}
+		if(($scope.signUp.password.length < 8)){
+			$scope.signUp.errorMessage.push('Password must be at least 8 characters.');
+		}
 		if($scope.signUp.errorMessage.length === 0){
 			$http.post('/api/signup', {
 				email: $scope.signUp.email,
