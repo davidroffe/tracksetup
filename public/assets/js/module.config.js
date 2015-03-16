@@ -8,7 +8,7 @@ angular.module('tsApp', ['ui.router', 'ui.bootstrap', 'ngCookies', 'ngResource']
 
   return {
 
-    guestUrl: 'http://test.tracksetup.info:8080/',
+    guestUrl: 'https://tracksetup.info/',
 
     uri: function(){
       if($location.path().indexOf('/panel') !== -1){
@@ -22,7 +22,6 @@ angular.module('tsApp', ['ui.router', 'ui.bootstrap', 'ngCookies', 'ngResource']
       } 
     },
     uriEventHandler: function(event, newUrl, oldUrl){
-			
       if(!($cookies.hasOwnProperty('auth')) && newUrl.indexOf(this.guestUrl + 'panel') === 0 ){
 				console.log('Unauthorized!');
         event.preventDefault();
