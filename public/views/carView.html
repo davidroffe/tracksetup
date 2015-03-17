@@ -14,14 +14,17 @@
 					<span ng-class="card.del.keepOpen">{{card.del.delButton}}</span>
 				</a>
 			</div>
-			<h1>Cards</h1>
 			<div id="add-card">
 				<a ng-click="card.add.open()">
 					<i class="fa fa-plus fa-lg"></i>
 					<span>New Card</span>
 				</a>
 			</div>
-			<p class="del-opt" ng-click="card.del.cancelOrUndo()" ng-show="card.del.isOpen">{{card.del.canOrUndoLabel}}<i ng-class="card.del.canOrUndoIcon"></i></p>
+			<h1 ng-class="card.titleHeader">Cards</h1>
+			<p class="del-opt" ng-click="card.del.cancelOrUndo()" ng-show="card.del.isOpen">
+				{{card.del.canOrUndoLabel}}
+				<i ng-class="card.del.canOrUndoIcon"></i>
+			</p>
 		</div>
 		<ul id="card-sel-container">
 			<li ng-repeat="cards in card.data">
@@ -42,14 +45,17 @@
 					<span ng-class="note.del.keepOpen">{{note.del.delButton}}</span>
 				</a>
 			</div>
-			<h1>Notes</h1>
 			<div id="add-note">
 				<a ng-click="note.add.open()">
 					<i class="fa fa-plus fa-lg"></i>
 					<span>New Card</span>
 				</a>
 			</div>
-			<p class="del-opt" ng-click="note.del.cancelOrUndo()" ng-show="note.del.isOpen">{{note.del.canOrUndoLabel}}<i ng-class="note.del.canOrUndoIcon"></i></p>
+			<h1 ng-class="note.titleHeader">Notes</h1>
+			<p class="del-opt" ng-click="note.del.cancelOrUndo()" ng-show="note.del.isOpen">
+			{{note.del.canOrUndoLabel}}
+			<i ng-class="note.del.canOrUndoIcon"></i>
+			</p>
 		</div>
 		<ul id="note-sel-container">
 			<li ng-repeat="notes in note.data">

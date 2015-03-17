@@ -1,4 +1,5 @@
 angular.module('tsApp').controller('detCarCtrl', ['$scope', '$stateParams', '$modal', '$http', '$Data', function($scope, $stateParams, $modal, $http, $Data){
+	
 	//Car
 	$scope.carId = $stateParams.id;
 	$scope.car = {};
@@ -18,6 +19,7 @@ angular.module('tsApp').controller('detCarCtrl', ['$scope', '$stateParams', '$mo
 	$scope.card.del.canOrUndoLabel = 'Cancel';
 	$scope.card.del.canOrUndoIcon = 'fa fa-lg fa-arrow-circle-o-left';
 	$scope.cardClass = 'card-sel';
+	$scope.card.titleClass = 'empty';
 
 
 	$Data.query({data: 'card', action: 'getmulti', id: $scope.carId}, function(data){
@@ -28,6 +30,8 @@ angular.module('tsApp').controller('detCarCtrl', ['$scope', '$stateParams', '$mo
 		for (var i = 0; i < $scope.card.data.length; i++){ 
 			$scope.card.del.chkBox[i] = 'check-sel fa fa-square-o';
 		}
+
+		$scope.card.titleClass = data.length > 0 ? '' : 'empty';
 	});
 
 
@@ -35,6 +39,7 @@ angular.module('tsApp').controller('detCarCtrl', ['$scope', '$stateParams', '$mo
 	$scope.note = {};
 	$scope.note.add = {};
 	$scope.note.noteSelClass = 'note-sel';
+	$scope.note.titleClass = 'empty';
 	$scope.note.del = {};
 	$scope.note.del.chkBox = [];
 	$scope.note.del.toDel = [];
@@ -55,7 +60,10 @@ angular.module('tsApp').controller('detCarCtrl', ['$scope', '$stateParams', '$mo
 			$scope.note.del.chkBox[i] = 'check-sel fa fa-close';
 		}
 
+		$scope.note.titleClass = data.length > 0 ? '' : 'empty';
+
 	});
+
 	
 	//card delete methods
 	$scope.card.del.open = function () {
@@ -250,8 +258,6 @@ angular.module('tsApp').controller('detCarCtrl', ['$scope', '$stateParams', '$mo
 
 	};
 
-
-	//Edit Car Modal
 	$scope.car.edit.open = function() {
 
 		$scope.car.edit.modalInstance = $modal.open({

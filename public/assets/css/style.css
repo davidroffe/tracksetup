@@ -551,11 +551,18 @@ div.cards.notes.container {
 	height: 60px;
 }
 
-#cards-title h1{
-  display: inline-block;
-	margin-left: 275px;
+#cards-title h1,
+#notes-title h1 {
+  width: 100%;
+	margin-left: -85px;
 	font-size: 30px;
+  text-align: center;
 	color: #767676;
+}
+
+#cards-title h1.empty,
+#notes-title h1.empty {
+  margin-left: 0;
 }
 
 #del-card, #del-note {
@@ -710,14 +717,6 @@ div.cards.notes.container {
   height: 60px;
 }
 
-#notes-title > h1{
-  display: inline-block;
-  margin-left: 22px;
-  text-align: center;
-  font-size: 30px;
-  color: #767676;
-}
-
 #add-note {
   float: right;
   height: 60px;
@@ -804,8 +803,8 @@ div.cards.notes.container {
 }
 
 .note-sel > p{
-    display: inline-block;
-    font-size: 22px;
+  text-align: center;
+  font-size: 22px;
 }
 
 p.col-1 {
@@ -1286,10 +1285,7 @@ div.delete > button.button {
 		width: 85%;
 		box-shadow: 0 -15px 20px rgba(0, 0, 0, 0.04), 0 6px 20px rgba(0, 0, 0, 0.04), -6px 8px 15px rgba(0, 0, 0, 0.04), 6px 8px 15px rgba(0, 0, 0, 0.04);
 	}
-	
-	#cards-title h1 {
-		margin-left: 25px;
-	}
+
 	
 	p.col-2, p.col-3 {
 		display: none;
