@@ -1277,6 +1277,12 @@ div.delete > button.button {
 		display: block;
 		float: none;
 	}
+
+  p.col-1 {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
 	
 	#car-notes {
 		display: block;

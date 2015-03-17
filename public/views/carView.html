@@ -31,8 +31,9 @@
 				<i ng-click="card.del.setDel(cards._id, $index)" ng-class="card.del.chkBox[$index]"></i>
 				<a ng-href="panel/card/{{cards._id}}" ng-class="cardClass">
 					<p class="col-1">{{cards.name}}</p>
-					<p class="col-2">{{cards.date}}</p>
 					<p class="col-3">{{cards.track}}</p>
+					<p class="col-2">{{cards.date}}</p>
+					
 				</a>
 			</li>
 		</ul>
