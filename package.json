@@ -1,5 +1,5 @@
 {
-  "name": "Track-Support",
+  "name": "Track Setup",
   "main": "Server.js",
   "dependencies": {
     "bcrypt-nodejs": "latest",
