@@ -5,8 +5,6 @@ angular.module('tsApp').controller('addCarCtrl', ['$scope', '$Data', '$location'
 
 		$scope.error = [];
 
-		console.log($scope.newCar.name);
-
 		if($scope.newCar.name === '' || $scope.newCar.name === undefined) $scope.error[0] = 'error';
 		if($scope.newCar.year === '' || $scope.newCar.year === undefined) $scope.error[1] = 'error';
 		if($scope.newCar.make === '' || $scope.newCar.make === undefined) $scope.error[2] = 'error';

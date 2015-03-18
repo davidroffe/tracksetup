@@ -6,7 +6,6 @@ angular.module('tsApp')
     $scope.user = data;
   });
 
-  $timeout(function(){console.log($scope.user.email);}, 500);
 
   $scope.logOut = function() {
     $http.get('/api/logout')

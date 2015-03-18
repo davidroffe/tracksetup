@@ -9,12 +9,10 @@ angular.module('tsApp').controller('settingsCtrl', ['$scope', '$Data', '$locatio
 		$scope.user = data;	
 		
 		for (var key in $scope.user) {
-			//console.log(key);
 			if(key.indexOf('$') === -1)
 				user[key] = $scope.user[key];
 		}
 		
-		console.log(user);
 	});
 	
 	$scope.updateEmail = function(){
@@ -30,14 +28,13 @@ angular.module('tsApp').controller('settingsCtrl', ['$scope', '$Data', '$locatio
 				$scope.emailMessageClass += ' show';
 			});
 		}
-		console.log('Account update successful');
 	};
 	
 	$scope.updatePassword = function(){
 		var password = $scope.password;
 		var confPass = $scope.confirmPassword;
 		car = password;
-		console.log(car);
+
 		if(password === '' || password === undefined || password.length < 8){
 			$scope.passwordMessage = "Must be 8 characters or longer.";
 			$scope.passwordMessageClass += ' show';
@@ -57,7 +54,6 @@ angular.module('tsApp').controller('settingsCtrl', ['$scope', '$Data', '$locatio
 			$scope.passwordMessage = 'Passwords do not match.';
 			$scope.passwordMessageClass += ' show';
 		}
-		console.log('Account update successful');
 	};
 	
 	$scope.deleteAccount = function(){

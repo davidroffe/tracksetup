@@ -5,7 +5,6 @@ angular.module('tsApp').controller('detCarCtrl', ['$scope', '$stateParams', '$mo
 	$scope.car = {};
 	$scope.car.edit = {};
 	$scope.car.data = $Data.get({data: 'car', action:'getsingle', id:$scope.carId});
-	console.log($scope.$parent.carId);
 
 	//Card
 	$scope.card = {};
@@ -73,12 +72,10 @@ angular.module('tsApp').controller('detCarCtrl', ['$scope', '$stateParams', '$mo
 			$scope.cardClass = 'card-sel del';
 			$scope.card.del.keepOpen = 'keep-open';
 			$scope.card.del.chkBox.forEach(function(el, ind, arr){
-				console.log(el);
 				//$scope.card.chkBox[ind] = 'check-sel fa fa-square-o del';
 				$scope.card.del.chkBox[ind] = 'check-sel fa fa-close del';
 			});
 			$scope.card.del.isOpen = true;
-			console.log($scope.card.del.chkBox[0]);
 		} else {
 			$scope.card.del.submit();
 		}
@@ -92,7 +89,6 @@ angular.module('tsApp').controller('detCarCtrl', ['$scope', '$stateParams', '$mo
 			$scope.cardClass = 'card-sel';
 			$scope.card.del.keepOpen = '';
 			$scope.card.del.chkBox.forEach(function(el, ind, arr){
-				console.log(el);
 				$scope.card.del.chkBox[ind] = 'check-sel fa fa-close';
 			});
 			$scope.card.del.isOpen = false;
@@ -108,7 +104,6 @@ angular.module('tsApp').controller('detCarCtrl', ['$scope', '$stateParams', '$mo
 
 
 	$scope.card.del.setDel = function(cardId, ind) {
-		console.log(ind);
 		$scope.card.del.toDel.push($scope.card.data[ind]._id);
 
 		$scope.card.data.splice(ind, 1);
@@ -155,7 +150,6 @@ angular.module('tsApp').controller('detCarCtrl', ['$scope', '$stateParams', '$mo
 			
 			});
 			$scope.note.del.isOpen = true;
-			console.log($scope.note.del.chkBox[0]);
 		} else {
 			$scope.note.del.submit();
 		}

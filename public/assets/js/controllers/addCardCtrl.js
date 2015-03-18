@@ -17,8 +17,6 @@ angular.module('tsApp').controller('addCardCtrl', ['$scope', '$Data', '$location
 
 		$scope.error = [];
 
-		console.log($scope.card.new.name);
-
 		if($scope.card.new.name === '' || $scope.card.new.name === undefined) $scope.error[0] = 'error';
 		if($scope.card.new.track === '' || $scope.card.new.track === undefined) $scope.error[1] = 'error';
 

@@ -6,11 +6,9 @@ angular.module('tsApp').directive('fileSelector', ['$http', function($http){
 				this.children[0].click();
 			});
 			element.children().bind('change', function(e){
-				console.log(scope.$parent.car.edit.image);
-
-					scope.$apply(function(){
-						scope.$parent.car.edit.image = e.target.files;
-					});
+				scope.$apply(function(){
+					scope.$parent.car.edit.image = e.target.files;
+				});
 			});
 		}
 	};

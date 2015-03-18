@@ -11,7 +11,6 @@ angular.module('tsApp').controller('cardCtrl', ['$scope', '$Data', '$stateParams
 	$scope.edit = function(){
 
 		$scope.card.dataCopy = copyObj($scope.card.data);
-		//console.log($scope.card.dataCopy);
 		var modalInstance = $modal.open({
 			templateUrl: '/views/editCardView.html',
 			scope: $scope,
@@ -28,18 +27,13 @@ angular.module('tsApp').controller('cardCtrl', ['$scope', '$Data', '$stateParams
 
 			$scope.error = [];
 
-			console.log($scope.card.dataCopy.name);
-
 			if($scope.card.dataCopy.name === '' || $scope.card.dataCopy.name === undefined) $scope.error[0] = 'error';
 			if($scope.card.dataCopy.track === '' || $scope.card.dataCopy.track === undefined) $scope.error[1] = 'error';
 
 			if($scope.error.length < 1){
 				$Data.save({data: 'card', action: 'edit', id: cardId}, $scope.card.dataCopy, function(){
 					$scope.card.data = $scope.card.dataCopy;
-
-					console.log($scope.card.dataCopy);
 				});
-				console.log('Passed!');
 				modalInstance.close();
 			}
 		};

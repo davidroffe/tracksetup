@@ -75,7 +75,6 @@ angular.module('tsApp').controller('editCarCtrl', ['$scope', '$http', '$Data', '
 
 				$modalInstance.close();
 			});
-			console.log('Success!');
 		} else if(!hasNewData && $scope.car.edit.error.length === 0){
 			$modalInstance.close();
 		}

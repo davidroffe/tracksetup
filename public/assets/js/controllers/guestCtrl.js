@@ -31,7 +31,6 @@ angular.module('tsApp').controller('guestCtrl', ['$scope', '$http', '$location',
 			})
 			.success(function(data, status){
 				$timeout(function(){$location.path('/panel/cars');}, 100);
-				console.log('URI changed');
 			})
 			.error(function(data, status){
 				$scope.login.errorMessage = data.message;
