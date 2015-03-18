@@ -1,11 +1,11 @@
 angular.module('tsApp').controller('detCarCtrl', ['$scope', '$stateParams', '$modal', '$http', '$Data', function($scope, $stateParams, $modal, $http, $Data){
 	
 	//Car
-	$scope.carId = $stateParams.id;
+	$scope.carId = $scope.$parent.carId = $stateParams.id;
 	$scope.car = {};
 	$scope.car.edit = {};
 	$scope.car.data = $Data.get({data: 'car', action:'getsingle', id:$scope.carId});
-
+	console.log($scope.$parent.carId);
 
 	//Card
 	$scope.card = {};

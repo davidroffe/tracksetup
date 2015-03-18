@@ -1,4 +1,4 @@
-angular.module('tsApp').controller('addNoteCtrl', ['$scope', '$Data', '$stateParams', '$modalInstance', function($scope, $Data, $stateParams, $modalInstance){
+angular.module('tsApp').controller('addNoteCtrl', ['$scope', '$Data', '$stateParams', '$modalInstance', 'ModalHelper', function($scope, $Data, $stateParams, $modalInstance, ModalHelper){
 	$scope.carId = $stateParams.id;
 	$scope.note.new = {};
 
@@ -31,9 +31,11 @@ angular.module('tsApp').controller('addNoteCtrl', ['$scope', '$Data', '$statePar
 	};
 
 
+	ModalHelper.handlerRemover = ModalHelper.disableNav($modalInstance.close.bind($modalInstance));
 	$scope.note.add.cancel = function() {
-		console.log($scope.test);
+		$scope.error = [];
 		$modalInstance.close();
+		ModalHelper.handlerRemover();
 	};
 
 }]);

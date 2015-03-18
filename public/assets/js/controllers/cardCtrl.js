@@ -1,9 +1,11 @@
-angular.module('tsApp').controller('cardCtrl', ['$scope', '$Data', '$stateParams', '$modal', function($scope, $Data, $stateParams, $modal){
+angular.module('tsApp').controller('cardCtrl', ['$scope', '$Data', '$stateParams', '$modal', 'ModalHelper', function($scope, $Data, $stateParams, $modal, ModalHelper){
 	var cardId = $stateParams.id;
+	$scope.carId = $scope.$parent.carId;
 	$scope.card = {};
 
 	$Data.get({data: 'card', action: 'getsingle', id: cardId}, function(data){
 		$scope.card.data = data;
+		$scope.carId = $scope.carId || data.car;
 	});
 
 	$scope.edit = function(){
@@ -16,8 +18,10 @@ angular.module('tsApp').controller('cardCtrl', ['$scope', '$Data', '$stateParams
 			backdrop: 'static'
 		});
 
+		ModalHelper.handlerRemover = ModalHelper.disableNav(modalInstance.close.bind(modalInstance));
 		$scope.cancel = function() {
 			modalInstance.close();
+			ModalHelper.handlerRemover();
 		};
 
 		$scope.submit = function() {

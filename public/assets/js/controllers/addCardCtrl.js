@@ -1,4 +1,4 @@
-angular.module('tsApp').controller('addCardCtrl', ['$scope', '$Data', '$location', '$stateParams', '$modalInstance', function($scope, $Data, $location, $stateParams, $modalInstance) {
+angular.module('tsApp').controller('addCardCtrl', ['$scope', '$Data', '$location', '$stateParams', '$modalInstance', 'ModalHelper', function($scope, $Data, $location, $stateParams, $modalInstance, ModalHelper) {
 	var carId = $stateParams.id;
 	$scope.show = [];
 	$scope.card = {};
@@ -46,13 +46,12 @@ angular.module('tsApp').controller('addCardCtrl', ['$scope', '$Data', '$location
 		}
 	};
 
-
+	ModalHelper.handlerRemover = ModalHelper.disableNav($modalInstance.close.bind($modalInstance));
 	$scope.card.add.cancel = function() {
-
 		$scope.error = [];
 		$modalInstance.close();
-
-	}
+		ModalHelper.handlerRemover();
+	};
 
 	$scope.card.add.expandAll = function(){
 		$scope.card.add.expandToggleLabel = $scope.card.add.expandToggleLabel === 'Expand All' ? 'Collapse All' : 'Expand All';

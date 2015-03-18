@@ -1,4 +1,4 @@
-angular.module('tsApp').controller('addCarCtrl', ['$scope', '$Data', '$location','$modalInstance', function($scope, $Data, $location, $modalInstance) {
+angular.module('tsApp').controller('addCarCtrl', ['$scope', '$Data', '$location','$modalInstance', 'ModalHelper', function($scope, $Data, $location, $modalInstance, ModalHelper) {
 	$scope.newCar = {};
 
 	$scope.submit = function() {
@@ -25,9 +25,10 @@ angular.module('tsApp').controller('addCarCtrl', ['$scope', '$Data', '$location'
 	
 		}
 	};
-	
+	ModalHelper.handlerRemover = ModalHelper.disableNav($modalInstance.close.bind($modalInstance));
 	$scope.cancel = function() {
 		$modalInstance.close();
+		ModalHelper.handlerRemover();
 	};
 
 }]);

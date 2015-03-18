@@ -1,24 +1,9 @@
-angular.module('tsApp').controller('noteCtrl', ['$scope', '$http', '$stateParams', '$modalInstance', function($scope, $http, $stateParams, $modalInstance){
+angular.module('tsApp').controller('noteCtrl', ['$scope', '$http', '$stateParams', '$modalInstance', 'ModalHelper', function($scope, $http, $stateParams, $modalInstance, ModalHelper){
 	$scope.carId = $stateParams.id;
 
-
-	$scope.note.add.cancel = function() {
-		console.log($scope.test);
+	ModalHelper.handlerRemover = ModalHelper.disableNav($modalInstance.close.bind($modalInstance));
+	$scope.note.cancel = function() {
 		$modalInstance.close();
-
+		ModalHelper.handlerRemover();
 	};
-	/*
-	$scope.note.add.submit = function(){
-		$http.post('/api/addnote/' + $scope.carId, $scope.newNote)
-		.success(function(data){
-			$modalInstance.close();
-		})
-		.error(function(data, status){
-			console.log('Could not add note: ' + data.message);
-		});
-	};
-
-	$scope.note.add.cancel = function() {
-		$modalInstance.close();
-	};*/
 }]);

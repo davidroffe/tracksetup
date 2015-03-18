@@ -1,4 +1,4 @@
-angular.module('tsApp').controller('editCarCtrl', ['$scope', '$http', '$Data', '$location','$modalInstance', '$stateParams', function($scope, $http, $Data, $location, $modalInstance, $stateParams) {
+angular.module('tsApp').controller('editCarCtrl', ['$scope', '$http', '$Data', '$location','$modalInstance', '$stateParams', 'ModalHelper', function($scope, $http, $Data, $location, $modalInstance, $stateParams, ModalHelper) {
 	var carId = $stateParams.id;
 	//copy initial data to compare against later
 	$scope.car.edit.data = copyObj($scope.car.data);
@@ -81,8 +81,10 @@ angular.module('tsApp').controller('editCarCtrl', ['$scope', '$http', '$Data', '
 		}
 	};
 	
+	ModalHelper.handlerRemover = ModalHelper.disableNav($modalInstance.close.bind($modalInstance));
 	$scope.car.edit.cancel = function() {
 		$modalInstance.close();
+		ModalHelper.handlerRemover();
 	};
 
 	function copyObj (obj){

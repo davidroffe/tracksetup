@@ -34,6 +34,19 @@ angular.module('tsApp', ['ui.router', 'ui.bootstrap', 'ngCookies', 'ngResource']
 
 }])
 
+.factory('ModalHelper', ['$rootScope', '$location', function($rootScope){
+    return {
+      disableNav: function(cancel) {
+        return $rootScope.$on('$locationChangeStart', function(event, newUrl, oldUrl){
+          console.log('test');
+          event.preventDefault();
+          cancel();
+          this.handlerRemover();
+        }.bind(this));
+      }
+    }
+}])
+
 .config(function($locationProvider){
   $locationProvider
   .html5Mode({
