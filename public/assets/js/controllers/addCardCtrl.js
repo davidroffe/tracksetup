@@ -7,6 +7,8 @@ angular.module('tsApp').controller('addCardCtrl', ['$scope', '$Data', '$location
 	$scope.card.add.expandToggleLabel = 'Expand All';
 	$scope.card.add.isExpand = false;
 
+	ModalHelper.handlerRemover = ModalHelper.disableNav($modalInstance.close.bind($modalInstance));
+
 	//collapse form initially
 	for(var i=0;i<14;i++){
 		$scope.show[i] = false;
@@ -37,14 +39,14 @@ angular.module('tsApp').controller('addCardCtrl', ['$scope', '$Data', '$location
 				});
 
 				$scope.error = [];
-				$modalInstance.close();
+				$scope.card.add.cancel();
 
 			});
 
 		}
 	};
 
-	ModalHelper.handlerRemover = ModalHelper.disableNav($modalInstance.close.bind($modalInstance));
+	
 	$scope.card.add.cancel = function() {
 		$scope.error = [];
 		$modalInstance.close();

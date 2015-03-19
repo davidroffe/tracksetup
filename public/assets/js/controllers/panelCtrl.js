@@ -1,10 +1,14 @@
 angular.module('tsApp')
 .controller('panelCtrl', ['$scope', '$http', '$location', '$cookies', '$timeout', '$resource', function($scope, $http, $location, $cookies, $timeout, $resource){
-  
+  $scope.clicked = false;
   var User = $resource('/api/user');
   var user = User.get(function(data){
     $scope.user = data;
   });
+  $scope.userMenuVisible = function(e) {
+        $scope.clicked = !$scope.clicked;
+        e.stopPropagation();
+  };
 
 
   $scope.logOut = function() {

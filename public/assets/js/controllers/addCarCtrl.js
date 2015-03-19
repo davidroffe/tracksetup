@@ -1,5 +1,6 @@
 angular.module('tsApp').controller('addCarCtrl', ['$scope', '$Data', '$location','$modalInstance', 'ModalHelper', function($scope, $Data, $location, $modalInstance, ModalHelper) {
 	$scope.newCar = {};
+	ModalHelper.handlerRemover = ModalHelper.disableNav($modalInstance.close.bind($modalInstance));
 
 	$scope.submit = function() {
 
@@ -18,12 +19,12 @@ angular.module('tsApp').controller('addCarCtrl', ['$scope', '$Data', '$location'
 				
 				$scope.$parent.cars = $Data.query({data: 'car', action: 'getmulti'});
 
-				$modalInstance.close();
+				$$scope.cancel();
 			});
 	
 		}
 	};
-	ModalHelper.handlerRemover = ModalHelper.disableNav($modalInstance.close.bind($modalInstance));
+
 	$scope.cancel = function() {
 		$modalInstance.close();
 		ModalHelper.handlerRemover();

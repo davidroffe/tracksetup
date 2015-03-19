@@ -1,4 +1,6 @@
 var express      = require('express');
+var forceSSL     = require('express-force-ssl');
+var http         = require('http');
 var https        = require('https');
 var app          = express();
 var logger       = require('morgan');
@@ -23,6 +25,8 @@ app.use(logger('dev'));
 
 app.use(busboy());
 
+app.use(forceSSL);
+
 app.all("/*", function(req, res, next) {
 	res.header('Access-Control-Allow-Origin', 'preview.track-setup.com');
 	res.header('Access-Control-Allow-Methods', 'GET,POST,DELETE,OPTIONS');
@@ -36,6 +40,11 @@ app.all("/*", function(req, res, next) {
 
 app.use('/', require('./app/routes'));
 
-https.createServer(httpsOptions, app).listen(port);
+var httpServer = http.createServer(app);
+var httpsServer = https.createServer(httpsOptions, app);
+
+httpsServer.listen(port);
+httpServer.listen(80);
 
 console.log('Magic happens on ' + port);
+console.log('Redirecting everything on port 80 to port ' + port);

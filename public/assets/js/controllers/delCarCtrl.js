@@ -1,4 +1,6 @@
 angular.module('tsApp').controller('delCarCtrl', ['$scope', '$Data', '$location','$modalInstance', 'ModalHelper', function($scope, $Data, $location, $modalInstance, ModalHelper) {
+	
+	ModalHelper.handlerRemover = ModalHelper.disableNav($modalInstance.close.bind($modalInstance));
 
 	$scope.delCar = function(ind) {
 		
@@ -12,8 +14,7 @@ angular.module('tsApp').controller('delCarCtrl', ['$scope', '$Data', '$location'
 			
 		}
 	};
-	
-	ModalHelper.handlerRemover = ModalHelper.disableNav($modalInstance.close.bind($modalInstance));
+
 	$scope.cancel = function() {
 		$modalInstance.close();
 		ModalHelper.handlerRemover();

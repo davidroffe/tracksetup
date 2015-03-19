@@ -3,6 +3,8 @@ angular.module('tsApp').controller('editCarCtrl', ['$scope', '$http', '$Data', '
 	//copy initial data to compare against later
 	$scope.car.edit.data = copyObj($scope.car.data);
 
+	ModalHelper.handlerRemover = ModalHelper.disableNav($modalInstance.close.bind($modalInstance));
+
 
 	$scope.$watch(function(){return $scope.car.edit.image;}, function(e){
 
@@ -73,14 +75,13 @@ angular.module('tsApp').controller('editCarCtrl', ['$scope', '$http', '$Data', '
 				
 				$scope.car.data = $scope.car.edit.data;
 
-				$modalInstance.close();
+				$scope.car.edit.cancel();
 			});
 		} else if(!hasNewData && $scope.car.edit.error.length === 0){
-			$modalInstance.close();
+			$scope.car.edit.cancel();
 		}
 	};
 	
-	ModalHelper.handlerRemover = ModalHelper.disableNav($modalInstance.close.bind($modalInstance));
 	$scope.car.edit.cancel = function() {
 		$modalInstance.close();
 		ModalHelper.handlerRemover();

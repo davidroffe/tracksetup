@@ -1,12 +1,12 @@
 <div id="top-nav">
 	<div id="top-nav-left">
-		<a href="/panel/cars" class="logo"><img src="assets/img/tire-logo.png"><div>Track Setup</div></a>
+		<a ng-href="/panel/cars" class="logo"><img src="assets/img/tire-logo.png"><div>Track Setup</div></a>
 	</div>
-	<div id="top-nav-right" menu>
-	  <a href="" ng-click="userMenuVisible()"><i class="fa fa-bars fa-lg"></i></a>
-	  <ul id="top-user-menu">
-	    <li><a href="/panel/settings"><i class="fa fa-cog"></i>Settings</a></li>
-	    <li><a href="" ng-click="logOut()"><i class="fa fa-power-off"></i>Logout</a></li>
+	<div id="top-nav-right">
+	  <a href="" ng-click="userMenuVisible($event)" menu><i class="fa fa-bars fa-lg"></i></a>
+	  <ul id="top-user-menu" ng-show="clicked">
+	    <li><a ng-href="/panel/settings"><i class="fa fa-cog"></i>Settings</a></li>
+	    <li><a ng-href="" ng-click="logOut()"><i class="fa fa-power-off"></i>Logout</a></li>
 	  </ul>
 	</div>
 </div>

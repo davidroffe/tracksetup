@@ -9,9 +9,9 @@ angular.module('tsApp').controller('cardCtrl', ['$scope', '$Data', '$stateParams
 	});
 
 	$scope.edit = function(){
-
 		$scope.card.dataCopy = copyObj($scope.card.data);
-		var modalInstance = $modal.open({
+
+		modalInstance = $modal.open({
 			templateUrl: '/views/editCardView.html',
 			scope: $scope,
 			backdrop: 'static'
@@ -34,7 +34,7 @@ angular.module('tsApp').controller('cardCtrl', ['$scope', '$Data', '$stateParams
 				$Data.save({data: 'card', action: 'edit', id: cardId}, $scope.card.dataCopy, function(){
 					$scope.card.data = $scope.card.dataCopy;
 				});
-				modalInstance.close();
+				$scope.cancel();
 			}
 		};
 	};
